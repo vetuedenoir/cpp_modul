@@ -16,6 +16,7 @@ NAME = zombie
 
 SRC = main Zombie newZombie randomChump
 
+INCLUDE = -I.
 
 OBJ = $(addsuffix .o, ${SRC})
 
@@ -25,7 +26,7 @@ all:	$(NAME)
 	$(CC) -c $(FLAGS) $< -o $@
 
 $(NAME):	${OBJ}
-		${CC} ${CFAGS} ${OBJ} -o ${NAME}
+		${CC} ${CFAGS} ${INCLUDE} ${OBJ} -o ${NAME}
 
 clean:
 			${RM} ${OBJ}
