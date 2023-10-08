@@ -12,10 +12,9 @@
 
 CC = c++
 FLAGS = -Wall -Wextra -Werror -std=c++98
+NAME = cerveau
 
-NAME = violence
-
-SRC = main Weapon HumanA HumanB
+SRC = main
 
 
 OBJ = $(addsuffix .o, ${SRC})

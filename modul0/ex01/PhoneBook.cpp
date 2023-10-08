@@ -101,11 +101,16 @@ void	PhoneBook::search ()
 		i++;
 	}
 	std::cout << "\nEntrez l'index du contact a afficher: ";
-	std::cin >> index;
-	if (index >= number || index < 0 || number == 0)
+	for (i=0; i<3; i++)
 	{
-		std::cout << "Mauvais index, reesayez\n";
-		return ;
+
+		std::cin >> index;
+		if ((index >= number || index < 0) && i < 2)
+			std::cout << "Mauvais index, reesayez: ";
+		else if ((index >= number || index < 0) && i == 2)
+			return ;
+		else
+			break ;
 	}
 	contacts[index].affiche();
 }
