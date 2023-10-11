@@ -14,11 +14,11 @@ class Point
     Point (const Point &copie);
     ~Point ();
     
-    void operator= (const Point &copie);
+    Point& operator= (const Point &copie);
  
     void  printPoint() const;
-    /*Fixed getX();
-    Fixed getY();*/
+    float getX() const;
+    float getY() const;
 };
 
 #endif
