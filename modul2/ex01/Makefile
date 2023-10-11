@@ -3,7 +3,7 @@ FLAGS = -Wall -Wextra -Werror -std=c++98
 
 NAME = exec
 
-SRC = main fixed
+SRC = main Fixed
 
 
 OBJ = $(addsuffix .o, ${SRC})

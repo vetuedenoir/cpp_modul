@@ -1,9 +1,9 @@
 CC = c++
 FLAGS = -Wall -Wextra -Werror -std=c++98
 
-NAME = exec
+NAME = triangulation
 
-SRC = main Fixed
+SRC = main Fixed Point #bsp
 
 
 OBJ = $(addsuffix .o, ${SRC})
