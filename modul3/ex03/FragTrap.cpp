@@ -34,7 +34,7 @@ FragTrap::~FragTrap ()
 
 void    FragTrap::highFivesGuys ()
 {
-    std::cout << "FragTrap " << name << " request a high five !" <<  std::endl;
+    std::cout << "Hey ! Do a High Fives !" << std::endl;
 }
 
 void	FragTrap::operator= (const FragTrap &model)
