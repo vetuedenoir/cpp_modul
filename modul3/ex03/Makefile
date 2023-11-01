@@ -3,7 +3,7 @@ FLAGS = -Wall -Wextra -Werror -std=c++98
 
 NAME = clapeur
 
-SRC = ClapTrap.cpp ScavTrap.cpp main.cpp 
+SRC = ClapTrap.cpp ScavTrap.cpp DiamondTrap.cpp main.cpp 
 
 INCLUDE =  -I.
 

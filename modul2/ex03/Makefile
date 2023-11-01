@@ -3,7 +3,7 @@ FLAGS = -Wall -Wextra -Werror -std=c++98
 
 NAME = triangulation
 
-SRC = main Fixed Point #bsp
+SRC = main Fixed Point bsp
 
 
 OBJ = $(addsuffix .o, ${SRC})

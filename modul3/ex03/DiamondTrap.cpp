@@ -1,34 +1,51 @@
-#include "DiamondTRap.hpp"
+#include "DiamondTrap.hpp"
 
-DiamondTrap::DiamondTrap (std::string name)
+DiamondTrap::DiamondTrap (std::string name) : ClapTrap(name), FragTrap(name), ScavTrap(name)
 {
-
+	name = name;
+	ClapTrap::name = name + "_clap_name";
+	hitPoints = FragTrap::hitPoints;
+	energiePoints = ScavTrap::energiePoints;
+	attackDamage = FragTrap::attackDamage;
+	std::cout << "DiamondTrap " << name << " is born." << std::endl;
 }
 
 DiamondTrap::DiamondTrap (const DiamondTrap &copie)
 {
-
+	*this = copie;
+	std::cout << "DiamondTrap copie " << name << " is born." << std::endl;
 }
 
-DiamondTrap::DiamondTrap ()
+DiamondTrap::DiamondTrap () : ClapTrap(""), ScavTrap(), FragTrap()
 {
-
+	ClapTrap::name = "_clap_name";
+	hitPoints = FragTrap::hitPoints;
+	energiePoints = ScavTrap::energiePoints;
+	attackDamage = FragTrap::attackDamage;
+	std::cout << "DiamondTrap DEFAULT CONSTRUCTOR is born." << std::endl;
 }
 
-DiamondTrap::~DiamondTrap (){}
+DiamondTrap::~DiamondTrap ()
+{
+	std::cout << "DiamondTrap " << name << " as died." << std::endl;
+}
 
 
 void	DiamondTrap::operator= (const DiamondTrap &model)
 {
-
+	Claptrap::name = model.ClapTrap::name;
+	name = model.name;
+	hitPoints = model.hitPoints;
+	energiePoints = model.energiePoints;
+	attackDamage = model.attackDamage;
 }
 
 void	DiamondTrap::attack(const std::string& target)
 {
-
+	ScavTrap::attack(target);
 }
 
 void	DiamondTrap::whoAmI ()
 {
-
+	std::cout << "DiamondTrap " << name << " has a ClapTrap name of " << ClapTrap::name << std::endl
 }

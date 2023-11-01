@@ -19,12 +19,8 @@ ScavTrap::ScavTrap (std::string name) : ClapTrap(name)
 	std::cout << "ScavTrap " << name << " is born." << std::endl;
 }
 
-ScavTrap::ScavTrap (const ScavTrap &copie) : ClapTrap(copie)
+ScavTrap::ScavTrap (const ScavTrap &copie)
 {
-	hitPoints = 100;
-	energiePoints = 50;
-	attackDamage = 20;
-	mode = false;
 	*this = copie;
 	std::cout << "ScavTrap copie " << name << " is born." << std::endl;
 }

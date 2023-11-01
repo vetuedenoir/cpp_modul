@@ -1,19 +1,19 @@
 #include "replace.hpp"
 
-std::string	search_and_replace(std::string &tampon, std::string &s1, std::string &s2)
+std::string	&search_and_replace(std::string &tampon, std::string &s1, std::string &s2)
 {
 	size_t	pos = 0;
-	std::string new_str;
 
 	while (pos != -1)
 	{
 		pos = tampon.find(s1, pos);
 		if (pos == -1)
 			break ;
-		//ajouter la substring de tampon jusqu a pos et ajouter s2 apres pos
-		//avec substring et append
-
+		tampon.erase(pos, s1.length());
+		tampon.insert(pos, s2);
+		pos += s2.length();
 	}
+	return tampon;
 }
 
 int	read_and_replace(std::string name, std::string name_modif ,std::string s1, std::string s2)
@@ -37,10 +37,7 @@ int	read_and_replace(std::string name, std::string name_modif ,std::string s1, s
 	{
 		if (!getline (fichier, tampon))
 			break ;
-		if (tampon.find(s1) == 0)
 			fichier_modif << search_and_replace(tampon, s1, s2) << "\n";
-		else
-			fichier_modif << tampon << "\n";
 	}
 	fichier.close();
 	fichier_modif.close();

@@ -5,20 +5,24 @@
 
 class Point
 {
-    const Fixed x;
-    const Fixed y;
+	Fixed const	x;
+	Fixed const	y;
 
  public:
-    Point ();
-    Point (const float, const float);
-    Point (const Point &copie);
-    ~Point ();
+	Point ();
+	Point (const float x, const float y);
+	Point (const Point &copie);
+	~Point ();
     
-    Point& operator= (const Point &copie);
+	Point& operator= (const Point &copie);
  
-    void  printPoint() const;
-    float getX() const;
-    float getY() const;
+	void  printPoint() const;
+	float getX() const;
+	float getY() const;
+	Fixed retX() const;
+	Fixed retY() const;
 };
+
+bool bsp( Point const a, Point const b, Point const c, Point const point);
 
 #endif

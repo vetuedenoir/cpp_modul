@@ -20,9 +20,10 @@ Fixed::Fixed (const Fixed &copie)
 	this->nombre = copie.getRawBits();
 }
 
-void	Fixed::operator=(const Fixed &model)
+Fixed&	Fixed::operator=(const Fixed &model)
 {
 	setRawBits(model.getRawBits());
+	return *this;
 }
 
 Fixed::~Fixed() {}

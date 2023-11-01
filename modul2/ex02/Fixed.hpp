@@ -21,7 +21,7 @@ private:
 	float	toFloat (void) const;
 	int		toInt(void) const;
 
-	void	operator=(const Fixed &model);
+	Fixed&	operator=(const Fixed &model);
 	bool	operator>(const Fixed &other) const;
 	bool	operator<(const Fixed &other) const;
 	bool	operator>=(const Fixed &other) const;

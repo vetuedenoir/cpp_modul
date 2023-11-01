@@ -18,11 +18,8 @@ FragTrap::FragTrap (std::string name) : ClapTrap(name)
 	std::cout << "FragTrap " << name << " is born." << std::endl;
 }
 
-FragTrap::FragTrap (const FragTrap &copie) : ClapTrap(copie)
+FragTrap::FragTrap (const FragTrap &copie)
 {
-	hitPoints = 100;
-	energiePoints = 100;
-	attackDamage = 30;
 	*this = copie;
 	std::cout << "FragTrap copie " << name << " is born." << std::endl;
 }
