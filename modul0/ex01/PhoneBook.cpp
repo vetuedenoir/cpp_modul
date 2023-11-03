@@ -6,7 +6,7 @@
 /*   By: kscordel <kscordel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 14:09:02 by kscordel          #+#    #+#             */
-/*   Updated: 2023/10/05 18:17:52 by kscordel         ###   ########.fr       */
+/*   Updated: 2023/11/03 13:58:52 by kscordel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,10 +84,10 @@ void PhoneBook::add ()
 void	PhoneBook::search ()
 {
 	int	i;
-	int	len;
+	int	x;
 	int	index;
+	std::string buff;
 
-	len = 0;
 	i = 0;
 	if (number == 0)
 	{
@@ -101,10 +101,22 @@ void	PhoneBook::search ()
 		i++;
 	}
 	std::cout << "\nEntrez l'index du contact a afficher: ";
-	for (i=0; i<3; i++)
+	for (i = 0; i < 3; i++)
 	{
-
-		std::cin >> index;
+		index = 0;
+		if (!std::getline(std::cin, buff))
+			break ;
+		x = -1;
+		while (buff[++x])
+		{
+			if (!isdigit(buff[x]))
+			{
+				index = -1;
+				break ;
+			}			
+		}
+		if (index != -1)
+			index = atoi(buff.c_str());
 		if ((index >= number || index < 0) && i < 2)
 			std::cout << "Mauvais index, reesayez: ";
 		else if ((index >= number || index < 0) && i == 2)

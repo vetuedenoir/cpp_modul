@@ -1,6 +1,6 @@
 
 #ifndef REPLACE_HPP
-# define REPACE_HPP
+# define REPLACE_HPP
 
 #include <iostream>
 #include <fstream>

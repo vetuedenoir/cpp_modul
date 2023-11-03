@@ -6,7 +6,7 @@
 /*   By: kscordel <kscordel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 15:03:42 by kscordel          #+#    #+#             */
-/*   Updated: 2023/09/05 18:58:48 by kscordel         ###   ########.fr       */
+/*   Updated: 2023/11/03 12:53:01 by kscordel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	main(void)
 	int		i;
 
 	horde = zombieHorde(5, "mechant");
-	if (horde == nullptr)
+	if (horde == NULL)
 		return (1);
 	for (i = 0; i < 5; i++)
 	{

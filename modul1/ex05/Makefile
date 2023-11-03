@@ -1,18 +1,18 @@
-CC = c++
-FLAGS = -Wall -Wextra -Werror -std=c++98
+CXX = c++
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
 NAME = harl
 
-SRC = main.cpp Harl.cpp
+SRC = main Harl
 
 INCLUDE =  -I.
 
-OBJ = $(SRC:.cpp=.o)
+OBJ = $(addsuffix .o, ${SRC})
 
 all:	$(NAME)
 
 $(NAME):	${OBJ}
-		${CC} ${CFAGS} $(INCLUDE) ${OBJ} -o ${NAME}
+		${CXX} ${CXXFLAGS} $(INCLUDE) ${OBJ} -o ${NAME}
 
 clean:
 			${RM} ${OBJ}

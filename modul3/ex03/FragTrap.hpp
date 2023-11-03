@@ -3,7 +3,7 @@
 
 #include "ClapTrap.hpp"
 
-class FRAGTrap : virtual public ClapTrap
+class FragTrap : virtual public ClapTrap
 {
  public:
 	FragTrap ();

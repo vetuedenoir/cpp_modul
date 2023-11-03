@@ -6,7 +6,7 @@
 /*   By: kscordel <kscordel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 18:50:56 by kscordel          #+#    #+#             */
-/*   Updated: 2023/10/05 18:56:10 by kscordel         ###   ########.fr       */
+/*   Updated: 2023/11/03 12:47:06 by kscordel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ bool	Account::makeWithdrawal( int withdrawal )
 		_amount -= withdrawal;
 		std::cout << "amount:" << _amount << ";";
 		_nbWithdrawals++;
-		std::cout << "nbWithdrawal:" << _nbWithdrawals << std::endl;
+		std::cout << "nb_Withdrawal:" << _nbWithdrawals << std::endl;
 		_totalAmount -= withdrawal;
 		_totalNbWithdrawals++;
 		return true;
@@ -118,7 +118,7 @@ void	Account::displayStatus( void ) const
 {
 	_displayTimestamp();
 	std::cout << "index:" << _accountIndex << ";";
-	std::cout << "amount:" << _amount << ":";
+	std::cout << "amount:" << _amount << ";";
 	std::cout << "deposits:" << _nbDeposits << ";";
 	std::cout << "withdrawals:" << _nbWithdrawals << std::endl;
 }

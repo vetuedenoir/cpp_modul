@@ -6,12 +6,12 @@
 #    By: kscordel <kscordel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/05 15:37:42 by kscordel          #+#    #+#              #
-#    Updated: 2023/09/05 18:06:03 by kscordel         ###   ########.fr        #
+#    Updated: 2023/11/03 13:00:56 by kscordel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CC = c++
-FLAGS = -Wall -Wextra -Werror -std=c++98
+CXX = c++
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
 NAME = violence
 
@@ -22,11 +22,8 @@ OBJ = $(addsuffix .o, ${SRC})
 
 all:	$(NAME)
 
-%.o:%.c
-	$(CC) -c $(FLAGS) $< -o $@
-
 $(NAME):	${OBJ}
-		${CC} ${CFAGS} ${OBJ} -o ${NAME}
+		${CXX} ${CXXFLAGS} ${OBJ} -o ${NAME}
 
 clean:
 			${RM} ${OBJ}

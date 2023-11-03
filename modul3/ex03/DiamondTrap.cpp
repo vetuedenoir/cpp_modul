@@ -2,7 +2,6 @@
 
 DiamondTrap::DiamondTrap (std::string name) : ClapTrap(name), FragTrap(name), ScavTrap(name)
 {
-	name = name;
 	ClapTrap::name = name + "_clap_name";
 	hitPoints = FragTrap::hitPoints;
 	energiePoints = ScavTrap::energiePoints;
@@ -16,7 +15,7 @@ DiamondTrap::DiamondTrap (const DiamondTrap &copie)
 	std::cout << "DiamondTrap copie " << name << " is born." << std::endl;
 }
 
-DiamondTrap::DiamondTrap () : ClapTrap(""), ScavTrap(), FragTrap()
+DiamondTrap::DiamondTrap () : ClapTrap(""), FragTrap(), ScavTrap()
 {
 	ClapTrap::name = "_clap_name";
 	hitPoints = FragTrap::hitPoints;
@@ -33,7 +32,7 @@ DiamondTrap::~DiamondTrap ()
 
 void	DiamondTrap::operator= (const DiamondTrap &model)
 {
-	Claptrap::name = model.ClapTrap::name;
+	ClapTrap::name = model.ClapTrap::name;
 	name = model.name;
 	hitPoints = model.hitPoints;
 	energiePoints = model.energiePoints;
@@ -47,5 +46,5 @@ void	DiamondTrap::attack(const std::string& target)
 
 void	DiamondTrap::whoAmI ()
 {
-	std::cout << "DiamondTrap " << name << " has a ClapTrap name of " << ClapTrap::name << std::endl
+	std::cout << "DiamondTrap " << name << " has a ClapTrap name of " << ClapTrap::name << std::endl;
 }

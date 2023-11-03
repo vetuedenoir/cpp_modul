@@ -1,5 +1,5 @@
-CC = c++
-FLAGS = -Wall -Wextra -Werror -std=c++98
+CXX = c++
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
 NAME = clapeur
 
@@ -12,7 +12,7 @@ OBJ = $(SRC:.cpp=.o)
 all:	$(NAME)
 
 $(NAME):	${OBJ}
-		${CC} ${CFAGS} $(INCLUDE) ${OBJ} -o ${NAME}
+		${CXX} ${CXXFLAGS} $(INCLUDE) ${OBJ} -o ${NAME}
 
 clean:
 			${RM} ${OBJ}

@@ -1,5 +1,5 @@
-CC = c++
-FLAGS = -Wall -Wextra -Werror -std=c++98
+CXX = c++
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
 NAME = exec
 
@@ -10,11 +10,8 @@ OBJ = $(addsuffix .o, ${SRC})
 
 all:	$(NAME)
 
-%.o:%.c
-	$(CC) -c $(FLAGS) $< -o $@
-
 $(NAME):	${OBJ}
-		${CC} ${CFAGS} ${OBJ} -o ${NAME}
+		${CXX} ${CXXFLAGS} ${OBJ} -o ${NAME}
 
 clean:
 			${RM} ${OBJ}
@@ -23,6 +20,5 @@ fclean:		clean
 			${RM} ${NAME}
 
 re:			fclean all
-
 
 .PHONY:		all clean fclean re
