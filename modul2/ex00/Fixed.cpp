@@ -12,7 +12,7 @@ Fixed::Fixed (const Fixed &copie)
 	this->nombre = copie.getRawBits();
 }
 
-void	Fixed::operator=(const Fixed &model)
+Fixed&	Fixed::operator=(const Fixed &model)
 {
 	std::cout << "Copy assignment operator called" << std::endl;
 	setRawBits(model.getRawBits());

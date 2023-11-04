@@ -23,4 +23,5 @@ int	main(void)
 	roi->announce();
 	delete roi;
 	randomChump("zouzou");
+	return (0);
 }

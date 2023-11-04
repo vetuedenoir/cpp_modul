@@ -53,3 +53,4 @@ Harl::Harl (void)
 	tab[3].name = "ERROR";
 	tab[3].Fonc_ptr = &Harl::error;
 }
+

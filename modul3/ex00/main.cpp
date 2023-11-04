@@ -7,8 +7,6 @@ int	main()
 	ClapTrap a (genesis);
 	ClapTrap b ("Benoit");
 	ClapTrap c ("Clapoteur");
-	ClapTrap d;
-	d = c;
 
 	std::cout << std::endl;
 
@@ -18,11 +16,11 @@ int	main()
 	b.takeDamage(0);
 
 	
-	std::cout << "\na big men help  " << d.retName() << " at attacking "
+	std::cout << "\na big men help  " << c.retName() << " at attacking "
 	<< a.retName() << std::endl;
 	while (i < 11)
 	{
-		d.attack(a.retName());
+		c.attack(a.retName());
 		a.takeDamage(1);
 		i++;
 	}

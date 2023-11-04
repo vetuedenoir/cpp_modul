@@ -11,9 +11,10 @@ private:
  public:
  	Fixed ();
  	Fixed (const Fixed &copie);
- 	void	operator=(const Fixed &model);
- 	~Fixed ();
- 	int	getRawBits ( void ) const;
+ 	Fixed&	operator=(const Fixed &model);
+	
+	~Fixed ();
+	int	getRawBits ( void ) const;
  	void	setRawBits (int const raw);
 };
 

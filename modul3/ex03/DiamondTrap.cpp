@@ -1,5 +1,14 @@
 #include "DiamondTrap.hpp"
 
+DiamondTrap::DiamondTrap () : ClapTrap(), FragTrap(), ScavTrap()
+{
+	ClapTrap::name = "_clap_name";
+	hitPoints = FragTrap::hitPoints;
+	energiePoints = ScavTrap::energiePoints;
+	attackDamage = FragTrap::attackDamage;
+	std::cout << "DiamondTrap DEFAULT CONSTRUCTOR is born." << std::endl;
+}
+
 DiamondTrap::DiamondTrap (std::string name) : ClapTrap(name), FragTrap(name), ScavTrap(name)
 {
 	ClapTrap::name = name + "_clap_name";
@@ -9,19 +18,10 @@ DiamondTrap::DiamondTrap (std::string name) : ClapTrap(name), FragTrap(name), Sc
 	std::cout << "DiamondTrap " << name << " is born." << std::endl;
 }
 
-DiamondTrap::DiamondTrap (const DiamondTrap &copie)
+DiamondTrap::DiamondTrap (const DiamondTrap &copie) : ClapTrap(), FragTrap(), ScavTrap()
 {
 	*this = copie;
 	std::cout << "DiamondTrap copie " << name << " is born." << std::endl;
-}
-
-DiamondTrap::DiamondTrap () : ClapTrap(""), FragTrap(), ScavTrap()
-{
-	ClapTrap::name = "_clap_name";
-	hitPoints = FragTrap::hitPoints;
-	energiePoints = ScavTrap::energiePoints;
-	attackDamage = FragTrap::attackDamage;
-	std::cout << "DiamondTrap DEFAULT CONSTRUCTOR is born." << std::endl;
 }
 
 DiamondTrap::~DiamondTrap ()
@@ -29,14 +29,14 @@ DiamondTrap::~DiamondTrap ()
 	std::cout << "DiamondTrap " << name << " as died." << std::endl;
 }
 
-
-void	DiamondTrap::operator= (const DiamondTrap &model)
+DiamondTrap&	DiamondTrap::operator= (const DiamondTrap &model)
 {
 	ClapTrap::name = model.ClapTrap::name;
 	name = model.name;
 	hitPoints = model.hitPoints;
 	energiePoints = model.energiePoints;
 	attackDamage = model.attackDamage;
+	return *this;
 }
 
 void	DiamondTrap::attack(const std::string& target)

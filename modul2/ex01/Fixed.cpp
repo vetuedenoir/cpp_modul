@@ -16,9 +16,6 @@ Fixed::Fixed (const float nb)
 {
 	std::cout << "Float constructor called" << std::endl;
 	nombre = roundf(nb * (1 << nbBitsFractionnaire));
-//	std::cout << "nb = " << nb << std::endl;
-//	std::cout << "LE Float " << nombre / 256  << "." << ( nombre % 256 * 1000000 / 256) << std::endl;
-	//std::cout << "normal " << nombre << std::endl;
 }
 
 Fixed::Fixed (const Fixed &copie)
@@ -27,7 +24,7 @@ Fixed::Fixed (const Fixed &copie)
 	this->nombre = copie.getRawBits();
 }
 
-void	Fixed::operator=(const Fixed &model)
+Fixed&	Fixed::operator=(const Fixed &model)
 {
 	std::cout << "Copy assignment operator called" << std::endl;
 	setRawBits(model.getRawBits());

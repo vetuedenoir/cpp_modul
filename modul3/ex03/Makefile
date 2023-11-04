@@ -3,7 +3,7 @@ CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
 NAME = clapeur
 
-SRC = ClapTrap.cpp ScavTrap.cpp DiamondTrap.cpp main.cpp 
+SRC = ClapTrap.cpp ScavTrap.cpp FragTrap.cpp DiamondTrap.cpp main.cpp 
 
 INCLUDE =  -I.
 
@@ -12,7 +12,7 @@ OBJ = $(SRC:.cpp=.o)
 all:	$(NAME)
 
 $(NAME):	${OBJ}
-		${CXX} ${CXXFLAGS} $(INCLUDE) ${OBJ} -o ${NAME}
+		${CXX} ${CXXFLAGS} ${INCLUDE} ${OBJ} -o ${NAME}
 
 clean:
 			${RM} ${OBJ}

@@ -1,20 +1,13 @@
 #include "ClapTrap.hpp"
 
-ClapTrap::ClapTrap (const std::string name) : name(name)
+ClapTrap::ClapTrap () : name(""), hitPoints(10), energiePoints(10), attackDamage(0)
 {
-	hitPoints = 10;
-	energiePoints = 10;
-	attackDamage = 0;
-	std::cout << "ClapTrap " << name << " is born." << std::endl;
+	std::cout << "ClapTrap DEFAULT CONSTUCTOR is born." << std::endl;
 }
 
-ClapTrap::ClapTrap ()
+ClapTrap::ClapTrap (const std::string name) : name(name), hitPoints(10), energiePoints(10), attackDamage(0)
 {
-	name  = "";
-	hitPoints = 10;
-	energiePoints = 10;
-	attackDamage = 0;
-	std::cout << "ClapTrap DEFAULT CONSTUCTOR is born." << std::endl;
+	std::cout << "ClapTrap " << name << " is born." << std::endl;
 }
 
 ClapTrap::ClapTrap (const ClapTrap &copie)
@@ -28,12 +21,13 @@ ClapTrap::~ClapTrap ()
 	std::cout << "ClapTrap " << name << " as died." << std::endl;
 }
 
-void ClapTrap::operator= (const ClapTrap &model)
+ClapTrap& ClapTrap::operator= (const ClapTrap &model)
 {
 	name = model.name;
 	hitPoints = model.hitPoints;
 	energiePoints = model.energiePoints;
 	attackDamage = model.attackDamage;
+	return *this;
 }
 
 void ClapTrap::attack(const std::string& target)
@@ -77,22 +71,22 @@ void	ClapTrap::beRepaired (unsigned int amount)
 			<< std::endl;
 }
 
-std::string ClapTrap::retName ()
+std::string ClapTrap::retName () const
 {
 	return (name);
 }
 
-unsigned int ClapTrap::retHit ()
+unsigned int ClapTrap::retHit () const
 {
 	return (hitPoints);
 }
 
-unsigned int ClapTrap::retEnergie ()
+unsigned int ClapTrap::retEnergie () const
 {
 	return (energiePoints);
 }
 
-unsigned int ClapTrap::retAtkDmg ()
+unsigned int ClapTrap::retAtkDmg () const
 {
 	return (attackDamage);
 }

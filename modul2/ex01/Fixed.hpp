@@ -14,10 +14,11 @@ private:
 	Fixed (const int nb);
 	Fixed (const float nb);
  	Fixed (const Fixed &copie);
- 	void	operator=(const Fixed &model);
+ 	Fixed& operator=(const Fixed &model);
 	
  	~Fixed ();
- 	int	getRawBits ( void ) const;
+ 	
+ 	int		getRawBits ( void ) const;
  	void	setRawBits (int const raw);
 	float	toFloat (void) const;
 	int		toInt(void) const;

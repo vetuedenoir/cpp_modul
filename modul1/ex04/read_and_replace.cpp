@@ -13,7 +13,7 @@ std::string	&search_and_replace(std::string &tampon, std::string &s1, std::strin
 		tampon.insert(pos, s2);
 		pos += s2.length();
 	}
-	return tampon;
+	return (tampon);
 }
 
 int	read_and_replace(std::string name, std::string name_modif ,std::string s1, std::string s2)
@@ -39,7 +39,8 @@ int	read_and_replace(std::string name, std::string name_modif ,std::string s1, s
 			break ;
 		fichier_modif << search_and_replace(tampon, s1, s2) << "\n";
 	}
-	fichier.close();
+	fichier.close();	
 	fichier_modif.close();
 	return (0);
 }
+

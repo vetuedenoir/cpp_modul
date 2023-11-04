@@ -26,4 +26,5 @@ int	main(void)
 		std::cout << "\n";
 	}
 	delete[] horde;
+	return (0);
 }
