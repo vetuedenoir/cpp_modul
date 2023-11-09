@@ -23,5 +23,5 @@ std::string const & AMateria::getType() const
 
 virtual void AMateria::use(ICharacter& target)
 {
-	std::cout << terget.getType() << std::endl;
+	std::cout << target.getType() << std::endl;
 }
