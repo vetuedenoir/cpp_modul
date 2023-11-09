@@ -1,12 +1,13 @@
 #ifndef ICE_HPP
 # define ICE_HPP
 
-#include "AMatateria.hpp"
+#include "AMateria.hpp"
 
 class Ice : public AMateria
 {
  public:
  	Ice (std::string const &type);
+	Ice ();
 	Ice (const Ice &copie);
 	~Ice ();
 
@@ -14,6 +15,6 @@ class Ice : public AMateria
  
 	Ice* clone() const;
 	void use(ICharacter& target);
-}
+};
 
 #endif

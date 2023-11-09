@@ -4,22 +4,25 @@
 # include <string>
 # include <iostream>
 
-class Character
+#include "ICharacter.hpp"
+
+class Character : public ICharacter
 {
-	Imateria	inventaire[4];
+	AMateria	*inventaire[4];
 	int			charge;
+	std::string	name;
 
  public:
 	Character (std::string &name);
 	Character (const Character &copy);
-	~Character() {}
+	~Character();
 
 	Character& operator= (const Character &model);
 
 	std::string const & getName() const;
 	void equip(AMateria* m);
 	void unequip(int idx);
-	void use(int idx, Character& target);
+	void use(int idx, ICharacter& target);
 };
 
 #endif

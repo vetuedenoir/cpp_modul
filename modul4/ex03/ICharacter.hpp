@@ -3,11 +3,12 @@
 
 # include <string>
 # include <iostream>
+# include "AMateria.hpp"
+
+class AMateria;
 
 class ICharacter
 {
-	std::string name;
-
  public:
 //	ICharacter (std::string &name);
 	//virtual ICharacter (const ICharacter &copy);

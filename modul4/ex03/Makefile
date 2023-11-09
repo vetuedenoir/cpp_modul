@@ -1,9 +1,10 @@
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
-NAME = animals
+NAME = source
 
-SRC =  main.cpp 
+SRC = AMateria.cpp Ice.cpp Cure.cpp Character.cpp\
+		MateriaSource.cpp main.cpp
 
 INCLUDE =  -I.
 

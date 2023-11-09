@@ -1,11 +1,10 @@
 #include "AMateria.hpp"
 
-
 AMateria::AMateria (std::string const &type) : type(type) {}
 
 AMateria::AMateria (const AMateria &copie)
 {
-	*this = copie.model;
+	*this = copie;
 }
 
 AMateria::~AMateria () {}
@@ -21,7 +20,7 @@ std::string const & AMateria::getType() const
 	return type;
 } //Returns the materia type
 
-virtual void AMateria::use(ICharacter& target)
+void AMateria::use(ICharacter& target)
 {
-	std::cout << target.getType() << std::endl;
+	std::cout << target.getName() << std::endl;
 }

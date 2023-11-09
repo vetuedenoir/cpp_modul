@@ -1,35 +1,35 @@
 #include "Character.hpp"
 
-Charactere::Character (std::string &name) : name(name), charge(0)
+Character::Character (std::string &name) : charge(0) , name(name)
 {}
 
-Charactere::Character (const Character &copy)
+Character::Character (const Character &copy)
 {
 	*this = copy;
 }
 
-Charactere::~Character()
+Character::~Character()
 {
 	while (charge-- > 0)
 		delete inventaire[charge];
 }
 
-Character& Charactere::operator= (const Character &model)
+Character& Character::operator= (const Character &model)
 {
 	while (charge-- > 0)
 		delete inventaire[charge];
 	for (charge = 0; charge < 4; charge++)
-		inventaire[charge] = charachter.inventaire[charge];
-	charge = character.charge;
+		inventaire[charge] = model.inventaire[charge];
+	charge = model.charge;
 	return *this;
 }
 
-std::string const & Charactere::getName() const
+std::string const & Character::getName() const
 {
 	return name;
 }
 
-void Charactere::equip(AMateria* m)
+void Character::equip(AMateria* m)
 {
 	if (charge < 4)
 	{
@@ -38,13 +38,13 @@ void Charactere::equip(AMateria* m)
 	}
 }
 
-void Charactere::unequip(int idx)
+void Character::unequip(int idx)
 {
 	if (idx < 4) // modulo ? memoir ?
 		inventaire[idx] = NULL;
 }
 
-void Charactere::use(int idx, Character& target)
+void Character::use(int idx, ICharacter& target)
 {
 	if (idx < charge)
 		inventaire[idx]->use(target); 

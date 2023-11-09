@@ -1,8 +1,10 @@
 #include "Ice.hpp"
 
-Ice::Ice (std::string const &type) : type(type) {}
+Ice::Ice (std::string const &type) : AMateria(type) {}
 
-Ice::Ice (const Ice &copie)
+Ice::Ice () : AMateria("Ice") {}
+
+Ice::Ice (const Ice &copie) : AMateria(copie)
 {
 	*this = copie;
 }
@@ -22,6 +24,6 @@ Ice*	Ice::clone() const
 
 void Ice::use(ICharacter& target)
 {
-	std::Cout << "* shoots an ice bolt at " << target.getname() << " *" << std::endl;
+	std::cout << "* shoots an ice bolt at " << target.getName() << " *" << std::endl;
 }
 
