@@ -13,7 +13,8 @@ class Character : public ICharacter
 	std::string	name;
 
  public:
-	Character (std::string &name);
+	Character (std::string name);
+	//Character (char *str);
 	Character (const Character &copy);
 	~Character();
 

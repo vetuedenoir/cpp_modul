@@ -2,7 +2,7 @@
 
 Cure::Cure (std::string const &type) : AMateria(type) {}
 
-Cure::Cure () : AMateria("Cure") {}
+Cure::Cure () : AMateria("cure") {}
 
 Cure::Cure (const Cure &copie) : AMateria(copie)
 {
@@ -24,6 +24,6 @@ Cure*	Cure::clone() const
 
 void Cure::use(ICharacter& target)
 {
-	std::cout << "* shoots an ice bolt at " << target.getName() << " *" << std::endl;
+	std::cout << "* heals "<< target.getName() << " wounds *" << std::endl;
 }
 

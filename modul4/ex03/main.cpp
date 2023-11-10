@@ -8,6 +8,9 @@
 
 int main()
 {
+	//Character cp("cp");
+	Character x("x");
+
     IMateriaSource* src = new MateriaSource();
 src->learnMateria(new Ice());
 src->learnMateria(new Cure());
@@ -20,6 +23,15 @@ me->equip(tmp);
 ICharacter* bob = new Character("bob");
 me->use(0, *bob);
 me->use(1, *bob);
+
+tmp = src->createMateria("ice");
+x.equip(tmp);
+tmp = src->createMateria("cure");
+x.equip(tmp);
+Character cp(x);
+
+cp.use(0, *bob);
+cp.use(1, *bob);
 delete bob;
 delete me;
 delete src;

@@ -2,7 +2,7 @@
 
 Ice::Ice (std::string const &type) : AMateria(type) {}
 
-Ice::Ice () : AMateria("Ice") {}
+Ice::Ice () : AMateria("ice") {}
 
 Ice::Ice (const Ice &copie) : AMateria(copie)
 {

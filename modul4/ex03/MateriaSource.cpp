@@ -4,7 +4,9 @@ MateriaSource::MateriaSource () : charge(0) {}
 
 MateriaSource::MateriaSource (const MateriaSource &copy)
 {
-	*this = copy;
+	for (charge = 0; charge < copy.charge; charge++)
+		inventaire[charge] = copy.inventaire[charge]->clone();
+	charge = copy.charge;
 }
 
 MateriaSource::~MateriaSource()
@@ -17,15 +19,15 @@ MateriaSource& MateriaSource::operator= (const MateriaSource &model)
 {
 	while (charge-- > 0)
 		delete inventaire[charge];
-	for (charge = 0; charge < 4; charge++)
-		inventaire[charge] = model.inventaire[charge];
+	for (charge = 0; charge < model.charge; charge++)
+		inventaire[charge] = model.inventaire[charge]->clone();
 	charge = model.charge;
 	return *this;
 }
 
 void MateriaSource::learnMateria(AMateria* m)
 {
-	if (charge < 4)
+	if (charge < 4 && m != NULL)
 	{
 		inventaire[charge] = m;
 		charge++;
