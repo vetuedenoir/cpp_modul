@@ -28,6 +28,7 @@ Fixed&	Fixed::operator=(const Fixed &model)
 {
 	std::cout << "Copy assignment operator called" << std::endl;
 	setRawBits(model.getRawBits());
+	return *this;
 }
 
 Fixed::~Fixed()
