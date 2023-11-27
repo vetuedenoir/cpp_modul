@@ -17,8 +17,9 @@
 
 class FragTrap : virtual public ClapTrap
 {
- public:
+protected:
 	FragTrap ();
+ public:
 	FragTrap (std::string name);
 	FragTrap (const FragTrap &copie);
 	~FragTrap ();

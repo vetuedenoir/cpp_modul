@@ -15,10 +15,10 @@
 
 #include "ClapTrap.hpp"
 
-class FRAGTrap : public ClapTrap
+class FragTrap : public ClapTrap
 {
- public:
 	FragTrap ();
+ public:
 	FragTrap (std::string name);
 	FragTrap (const FragTrap &copie);
 	~FragTrap ();

@@ -17,9 +17,10 @@
 
 class ScavTrap : virtual public ClapTrap
 {
+protected:
 	bool mode;
- public:
 	ScavTrap ();
+ public:
 	ScavTrap (std::string name);
 	ScavTrap (const ScavTrap &copie);
 	~ScavTrap ();

@@ -18,8 +18,8 @@
 class ScavTrap : public ClapTrap
 {
 	bool mode;
- public:
 	ScavTrap ();
+ public:
 	ScavTrap (std::string name);
 	ScavTrap (const ScavTrap &copie);
 	~ScavTrap ();

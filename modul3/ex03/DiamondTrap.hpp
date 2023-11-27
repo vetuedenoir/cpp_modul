@@ -20,8 +20,8 @@
 class DiamondTrap : public FragTrap, public ScavTrap
 {
 	std::string name;
+	DiamondTrap ();
  public:
- 	DiamondTrap ();
  	DiamondTrap (std::string name);
 	DiamondTrap (const DiamondTrap &copie);
 	~DiamondTrap ();

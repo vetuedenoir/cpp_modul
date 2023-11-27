@@ -30,12 +30,13 @@ int	main()
 	
 	std::cout << "\na big men help  " << c.retName() << " at attacking "
 	<< a.retName() << std::endl;
-	while (i < 11)
+	while (i < 3)
 	{
 		c.attack(a.retName());
-		a.takeDamage(1);
+		a.takeDamage(7);
 		i++;
 	}
 	std::cout << std::endl;
 	a.beRepaired(5);
+	std::cout << a.retName() << " have " << a.retHit() << " hitPoints" << std::endl;
 }

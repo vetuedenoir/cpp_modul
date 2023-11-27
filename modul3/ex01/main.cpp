@@ -27,9 +27,9 @@ int	main()
 	d.guardGate();
 	d.guardGate();
 	a.attack(b.retName());
-	b.takeDamage(20);
+	b.takeDamage(a.retAtkDmg());
 	c.attack(b.retName());
-	b.takeDamage(20);
+	b.takeDamage(c.retAtkDmg());
 
 	
 	std::cout << "\n" << d.retName() << " is attacking "
@@ -37,7 +37,7 @@ int	main()
 	while (i < 2)
 	{
 		d.attack(a.retName());
-		a.takeDamage(20);
+		a.takeDamage(d.retAtkDmg());
 		i++;
 	}
 	std::cout << std::endl;

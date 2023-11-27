@@ -12,20 +12,21 @@
 
 #include "ClapTrap.hpp"
 #include "ScavTrap.hpp"
+#include "FragTrap.hpp"
 
 int	main()
 {
 	int	i = 0;
-	const ScavTrap genesis ("First of all");
-	ScavTrap a (genesis);
-	ScavTrap b ("Benoit");
-	ScavTrap c ("Clapoteur");
-	ScavTrap d ("Escavator");
+	const FragTrap genesis ("First of all");
+	FragTrap a (genesis);
+	FragTrap b ("Benoit");
+	FragTrap c ("Clapoteur");
+	FragTrap d ("Escavator");
 
 	std::cout << std::endl;
 
-	d.guardGate();
-	d.guardGate();
+	d.highFivesGuys();
+	b.highFivesGuys();
 	a.attack(b.retName());
 	b.takeDamage(20);
 	c.attack(b.retName());

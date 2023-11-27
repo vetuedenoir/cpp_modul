@@ -22,6 +22,10 @@ int	main()
 	dd.highFivesGuys();
 	dd.attack("Dumas");
 	dd.whoAmI();
+	std::cout << dd.retName() << " have " << dd.retHit() << " hitPoints" << std::endl;
+	std::cout << dd.retName() << " have " << dd.retEnergie() << " energiePoints" << std::endl;
+	std::cout << dd.retName() << " have " << dd.retAtkDmg() << " of attackDamage" << std::endl;
+
 
 	return 0;
 }

@@ -15,7 +15,7 @@ CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
 NAME = clapeur
 
-SRC = ClapTrap.cpp ScavTrap.cpp main.cpp 
+SRC = ClapTrap.cpp ScavTrap.cpp  FragTrap.cpp main.cpp 
 
 INCLUDE =  -I.
 
