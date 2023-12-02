@@ -6,7 +6,7 @@
 /*   By: kscordel <kscordel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 18:24:03 by kscordel          #+#    #+#             */
-/*   Updated: 2023/11/13 18:24:04 by kscordel         ###   ########.fr       */
+/*   Updated: 2023/12/02 12:16:16 by kscordel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,9 @@ Cat::~Cat()
 	
 Cat&	Cat::operator= (const Cat &model)
 {
+	if (brain != NULL)
+		delete brain;
+	brain = new Brain (*model.brain);
 	type = model.type;
 	return *this;
 }

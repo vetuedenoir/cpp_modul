@@ -6,12 +6,12 @@
 #    By: kscordel <kscordel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/13 18:24:24 by kscordel          #+#    #+#              #
-#    Updated: 2023/11/13 18:24:25 by kscordel         ###   ########.fr        #
+#    Updated: 2023/12/01 19:58:53 by kscordel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CXX = c++
-CXXFLAGS = -Wall -Wextra -Werror -std=c++98
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -g3
 
 NAME = animals
 

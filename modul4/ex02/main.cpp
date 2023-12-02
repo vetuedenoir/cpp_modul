@@ -6,7 +6,7 @@
 /*   By: kscordel <kscordel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 18:24:19 by kscordel          #+#    #+#             */
-/*   Updated: 2023/11/13 18:24:20 by kscordel         ###   ########.fr       */
+/*   Updated: 2023/12/02 12:19:31 by kscordel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,11 +66,16 @@ int main()
 	tab[1] = new Dog();
 	tab[2] = new Cat();
 	tab[3] = new Dog();
+	Dog *d1 = new Dog();
+	Dog *d2 = new Dog (*d1);
+	
+	d2->makeSound();
 
 	ft_lavie(tab, 4);
 	testbrain();
 	std::cout << std::endl;
-
+	delete d1;
+	delete d2;
 	for (i = 0; i < 4; i++)
 		delete tab[i];
 	return (0);

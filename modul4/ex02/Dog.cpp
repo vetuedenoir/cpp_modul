@@ -6,7 +6,7 @@
 /*   By: kscordel <kscordel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 18:24:12 by kscordel          #+#    #+#             */
-/*   Updated: 2023/11/13 18:24:13 by kscordel         ###   ########.fr       */
+/*   Updated: 2023/12/02 12:21:30 by kscordel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ Dog::Dog() : Animal()
 Dog::Dog(const Dog &copie) : Animal()
 {
 	std::cout << "constructeur copie Dog" << std::endl;
+	brain = NULL;
 	*this = copie;
 }
 
@@ -34,6 +35,9 @@ Dog::~Dog()
 	
 Dog&	Dog::operator= (const Dog &model)
 {
+	if (brain != NULL)
+		delete brain;
+	brain = new Brain (*model.brain);
 	type = model.type;
 	return *this;
 }
