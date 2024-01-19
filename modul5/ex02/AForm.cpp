@@ -11,8 +11,17 @@ AForm::AForm (const std::string n_name, int n_gradeSigne, int n_gradeExec) : nam
 		throw AForm::GradeTooHighException();
 }
 
-AForm::AForm (const AForm &copie) : name(copie.name), isSigned(copie.isSigned), \
-	 gradeSigne(copie.gradeSigne), gradeExec(copie.gradeExec){}
+AForm::AForm(const std::string n_name, int n_gradeSigne, int n_gradeExec, bool n_isSigned) :\
+	name(n_name), gradeSigne(n_gradeSigne), gradeExec(n_gradeExec) , isSigned(n_isSigned)
+{
+	if (gradeExec > 150 || gradeSigne > 150)
+		throw AForm::GradeTooLowException();
+	if (gradeExec < 1 || gradeSigne < 1)
+		throw AForm::GradeTooHighException();
+}
+
+AForm::AForm (const AForm &copie) : name(copie.name), gradeSigne(copie.gradeSigne), \
+	gradeExec(copie.gradeExec), isSigned(copie.isSigned) {}
 
 AForm::~AForm () {}
 
