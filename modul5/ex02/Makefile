@@ -1,3 +1,14 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: kscordel <kscordel@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2024/01/20 17:56:23 by kscordel          #+#    #+#              #
+#    Updated: 2024/01/20 17:56:25 by kscordel         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
 
 CXX = c++
 FLAGS = -Wall -Wextra -Werror -std=c++98 -I.
@@ -6,7 +17,8 @@ RM = rm -rf
 
 NAME = bureaucrat
 
-SRC = main.cpp  AForm.cpp Bureaucrat.cpp PresidentialPardonForm.cpp  RobotomyRequestForm.cpp  ShrubberyCreationForm.cpp
+SRC = main.cpp  AForm.cpp Bureaucrat.cpp \
+	PresidentialPardonForm.cpp  RobotomyRequestForm.cpp  ShrubberyCreationForm.cpp
 
 
 SRC_DIR = ./

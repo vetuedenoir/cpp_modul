@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   read_and_replace.cpp                               :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kscordel <kscordel@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/01/20 18:01:19 by kscordel          #+#    #+#             */
+/*   Updated: 2024/01/20 18:01:20 by kscordel         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "replace.hpp"
 
 std::string	&search_and_replace(std::string &tampon, std::string &s1, std::string &s2)

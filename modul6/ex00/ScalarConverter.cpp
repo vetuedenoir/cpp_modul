@@ -1,22 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   replace.hpp                                        :+:      :+:    :+:   */
+/*   ScalarConverter.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kscordel <kscordel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/20 18:01:26 by kscordel          #+#    #+#             */
-/*   Updated: 2024/01/20 18:01:28 by kscordel         ###   ########.fr       */
+/*   Created: 2024/01/20 19:58:31 by kscordel          #+#    #+#             */
+/*   Updated: 2024/01/20 20:02:06 by kscordel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef REPLACE_HPP
-# define REPLACE_HPP
+#include "ScalarConverter.hpp"
 
-#include <iostream>
-#include <fstream>
-#include <string>
+ScalarConverter::ScalarConverter () {}
 
-int	read_and_replace(std::string name, std::string name_modif, std::string s1, std::string s2);
+ScalarConverter::ScalarConverter (const ScalarConverter &copie)
+{
+	*this = copie;
+}
 
-#endif
+ScalarConverter::~ScalarConverter () {}
+
+ScalarConverter&	ScalarConverter::operator= (const ScalarConverter &model)
+{
+	(void)model;
+	return *this;
+}

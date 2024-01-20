@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: kscordel <kscordel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/20 17:58:22 by kscordel          #+#    #+#             */
-/*   Updated: 2024/01/20 17:58:24 by kscordel         ###   ########.fr       */
+/*   Created: 2024/01/20 17:54:07 by kscordel          #+#    #+#             */
+/*   Updated: 2024/01/20 17:54:09 by kscordel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,10 @@
 # include <string>
 # include <iostream>
 # include <exception>
+
+# include "AForm.hpp"
+
+class AForm;
 
 class Bureaucrat
 {
@@ -36,6 +40,9 @@ public:
 	void	setGrade(const int n_grade);
 	void	incrementGrade();
 	void	decrementeGrade();
+
+	void	signeForm(AForm &f);
+	void	executeForm(const AForm & form);
 
 	class GradeTooHighException : public std::exception
 	{

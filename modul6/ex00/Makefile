@@ -5,19 +5,19 @@
 #                                                     +:+ +:+         +:+      #
 #    By: kscordel <kscordel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/01/20 17:58:01 by kscordel          #+#    #+#              #
-#    Updated: 2024/01/20 17:58:03 by kscordel         ###   ########.fr        #
+#    Created: 2024/01/20 19:27:59 by kscordel          #+#    #+#              #
+#    Updated: 2024/01/20 19:28:50 by kscordel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CXX = c++
-FLAGS = -Wall -Wextra -Werror -std=c++98 -I.
+FLAGS = -Wall -Wextra -Werror -std=c++98
 CXXFLAGS = $(FLAGS) -MMD
 RM = rm -rf
 
-NAME = bureaucrat
+NAME = convert
 
-SRC = main.cpp  Form.cpp Bureaucrat.cpp
+SRC = main.cpp ScalarConverter.cpp
 
 
 SRC_DIR = ./

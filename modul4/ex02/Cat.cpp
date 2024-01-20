@@ -6,7 +6,7 @@
 /*   By: kscordel <kscordel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 18:24:03 by kscordel          #+#    #+#             */
-/*   Updated: 2023/12/02 12:16:16 by kscordel         ###   ########.fr       */
+/*   Updated: 2024/01/19 18:19:29 by kscordel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void	Cat::think ()
 	if (random == 1)
 		brain->getIdeas("une Souris !");
 	if (random == 2)
-		brain->getIdeas("cible reperer");
+		brain->getIdeas("cible reperee");
 	if (random == 3)
 		brain->getIdeas("a l attaque");
 	if (random == 4)
@@ -64,13 +64,13 @@ void	Cat::think ()
 	if (random == 5)
 		brain->getIdeas("voila mon offrande");
 	if (random == 6)
-		brain->getIdeas("Ho un chien, mon ennemie jure !");
+		brain->getIdeas("Ho un chien, mon ennemi jure !");
 	if (random == 7)
 		brain->getIdeas("trop fatiguee !..");
 	if (random == 8)
 		brain->getIdeas("besoin de caresse");
 	if (random == 9)
-		brain->getIdeas("faut faire un salto et normalent sa passe");
+		brain->getIdeas("faut faire un salto et normalement ca passe");
 }
 
 void	Cat::displayIdeas () const

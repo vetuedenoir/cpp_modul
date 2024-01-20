@@ -5,19 +5,20 @@
 #                                                     +:+ +:+         +:+      #
 #    By: kscordel <kscordel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/01/20 17:58:01 by kscordel          #+#    #+#              #
-#    Updated: 2024/01/20 17:58:03 by kscordel         ###   ########.fr        #
+#    Created: 2024/01/20 17:54:31 by kscordel          #+#    #+#              #
+#    Updated: 2024/01/20 18:43:10 by kscordel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CXX = c++
-FLAGS = -Wall -Wextra -Werror -std=c++98 -I.
+FLAGS = -Wall -Wextra -Werror -std=c++98
 CXXFLAGS = $(FLAGS) -MMD
 RM = rm -rf
 
 NAME = bureaucrat
 
-SRC = main.cpp  Form.cpp Bureaucrat.cpp
+SRC = main.cpp AForm.cpp Bureaucrat.cpp Intern.cpp \
+	PresidentialPardonForm.cpp  RobotomyRequestForm.cpp  ShrubberyCreationForm.cpp
 
 
 SRC_DIR = ./

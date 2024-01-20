@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Bureaucrat.cpp                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kscordel <kscordel@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/01/20 17:56:06 by kscordel          #+#    #+#             */
+/*   Updated: 2024/01/20 17:56:07 by kscordel         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
 
@@ -56,18 +67,33 @@ void	Bureaucrat::decrementeGrade ()
 		grade++;
 }
 
-void	Bureaucrat::signeForm (AForm &f)
+void	Bureaucrat::signeForm (AForm &form)
 {
 	try
 	{
-		f.beSigned(*this);
-		std::cout << name << " signed " << f.getName() << std::endl; 
+		form.beSigned(*this);
+		std::cout << name << " signed " << form.getName() << std::endl; 
 	}
 	catch(const std::exception& e)
 	{
-		std::cerr <<  name << " couldn't sign " << f.getName() << \
+		std::cerr <<  name << " couldn't sign " << form.getName() << \
 			" because " << e.what() << '\n';
 	}
+}
+
+void	Bureaucrat::executeForm(const AForm & form)
+{
+	try
+	{
+		form.execute(*this);
+		std::cout << name << " executed " << form.getName() << std::endl;
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr <<  name << " couldn't execute " << form.getName() << \
+			" because " << e.what() << '\n';
+	}
+	
 }
 
 std::ostream &operator << (std::ostream &out, const Bureaucrat &b)

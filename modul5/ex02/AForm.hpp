@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   AForm.hpp                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kscordel <kscordel@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/01/20 17:56:00 by kscordel          #+#    #+#             */
+/*   Updated: 2024/01/20 17:56:01 by kscordel         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef AFORM_HPP
 # define AFORM_HPP
 
@@ -41,6 +53,11 @@ public:
 	class GradeTooLowException : public std::exception
 	{	public:
 			const char *what() const throw() {return "The grade is too low";}
+	};
+
+	class NotSignedException : public std::exception
+	{	public:
+			const char *what() const throw() {return "The Form is not signed";}
 	};
 
 };

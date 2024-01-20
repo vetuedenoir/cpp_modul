@@ -1,22 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   replace.hpp                                        :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kscordel <kscordel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/20 18:01:26 by kscordel          #+#    #+#             */
-/*   Updated: 2024/01/20 18:01:28 by kscordel         ###   ########.fr       */
+/*   Created: 2024/01/20 19:57:08 by kscordel          #+#    #+#             */
+/*   Updated: 2024/01/20 20:04:00 by kscordel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef REPLACE_HPP
-# define REPLACE_HPP
-
 #include <iostream>
-#include <fstream>
-#include <string>
+#include "ScalarConverter.hpp"
 
-int	read_and_replace(std::string name, std::string name_modif, std::string s1, std::string s2);
-
-#endif
+int	main(int ac, char **av)
+{
+	if (ac != 2)
+	{
+		std::cout << av[0] << " take one arguments" << std::endl;
+	}
+	return (0);
+}

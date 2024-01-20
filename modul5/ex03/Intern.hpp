@@ -1,22 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   replace.hpp                                        :+:      :+:    :+:   */
+/*   Intern.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kscordel <kscordel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/20 18:01:26 by kscordel          #+#    #+#             */
-/*   Updated: 2024/01/20 18:01:28 by kscordel         ###   ########.fr       */
+/*   Created: 2024/01/20 17:54:21 by kscordel          #+#    #+#             */
+/*   Updated: 2024/01/20 17:54:22 by kscordel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef REPLACE_HPP
-# define REPLACE_HPP
+#ifndef INTERN_HPP
+# define INTERN_HPP
 
 #include <iostream>
-#include <fstream>
 #include <string>
 
-int	read_and_replace(std::string name, std::string name_modif, std::string s1, std::string s2);
+#include "AForm.hpp"
+#include "PresidentialPardonForm.hpp"
+#include "RobotomyRequestForm.hpp"
+#include "ShrubberyCreationForm.hpp"
+
+class Intern
+{
+public:
+	Intern();
+	Intern(const Intern &copie);
+	~Intern();
+	Intern&	operator= (const  Intern &model);
+
+	AForm*	makeForme(std::string type, std::string target);
+};
 
 #endif
