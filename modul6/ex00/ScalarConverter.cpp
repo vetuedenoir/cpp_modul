@@ -38,32 +38,38 @@ bool	ScalarConverter::isChar(std::string str)
 
 bool	ScalarConverter::isInt(std::string str)
 {
-	int	i = 0;
+	unsigned long int	i = 0;
 
 	for (i = 0; i < str.length(); i++)
 	{
 		if (!isdigit(str[i]))
-			return false;
+		{
+			if (i != 0 || !(str[i] == '-' || str[i] == '+'))
+				return false;
+		}
 	}
 	return true;
 }
 
 bool	ScalarConverter::isFloat(std::string str)
 {
-	int	i = 0;
+	unsigned long int	i = 0;
 	int	np = 0;
+	unsigned long int	s = 0;
 
+	if (str[str.length() - 1] != 'f')
+				return false;
 	if (str.compare("nanf") || str.compare("-inff") || str.compare("+inff") || str.compare("inff"))
 		return true;
+	if (str[0] == '-' ||str[0] == '+')
+		s = 1;
 	for (i = 0; i < str.length(); i++)
 	{
 		if (!isdigit(str[i]))
 		{
-			if (i + 1 == str.length() && str[i] != 'f')
-				return false;
-			else if (str[i] == '.')
+			if (str[i] == '.')
 			{
-				if (np == 2 || i == 0 || i + 1 == str.length())
+				if (np == 2 || i == s || i + 1 == str.length())
 					return false;
 				np++;
 			}
@@ -78,22 +84,23 @@ bool	ScalarConverter::isFloat(std::string str)
 
 bool	ScalarConverter::isDouble(std::string str)
 {
-	int	i;
+	unsigned long int	i = 0;
 	int	np = 0;
-	
+	unsigned long int	s = 0;
+
 	if (str.compare("nan") || str.compare("-inf") || str.compare("+inf") || str.compare("inf"))
 		return true;
+	if (str[0] == '-' ||str[0] == '+')
+		s = 1;
 	for (i = 0; i < str.length(); i++)
 	{
 		if (!isdigit(str[i]))
 		{
 			if (str[i] != '.')
 				return false;
-			else if (str[i] == '.' && (i == 0 || i + 1 == str.length()))
+			if (i == s || i + 1 == str.length())
 				return false;
-			else if (str[i] == '.')
-				np++;
-			if (np > 1)
+			if (++np > 1)
 				return false;
 		}
 	}
@@ -112,9 +119,8 @@ int		ScalarConverter::strToInt(std::string str)
 
 float	ScalarConverter::strToFloat(std::string str)
 {
-	double	after = 0.0;
+	float	after = 0.0;
 	std::string	past("");
-	
 	int	i = 0;
 
 	while (str[i])
@@ -123,18 +129,67 @@ float	ScalarConverter::strToFloat(std::string str)
 			break ;
 		i++;
 	}
-	past = str.substr(i);
+	past = str.substr(i + 1);
 	after = atoi(past.c_str());
+	i = past.length() - 1;
 	while (i > 0)
 	{
-		after /= 10;
+		after /= 10.0;
 		i--;
 	}
-	after += atoi()；
-	
+	if (str[0] == '-')
+		after *= -1;
+	after += (double)atoi(str.c_str());
+	return after;
 }
 
 double	ScalarConverter::strToDouble(std::string str)
 {
-	
+	double	after = 0.0;
+	std::string	past("");
+	int	i = 0;
+
+	after = nan(str.c_str());
+	return after;
+	while (str[i])
+	{
+		if (str[i] == '.')
+			break ;
+		i++;
+	}
+	past = str.substr(i + 1);
+	after = atoi(past.c_str());
+	i = past.length();
+	while (i > 0)
+	{
+		after /= 10.0;
+		i--;
+	}
+	if (str[0] == '-')
+		after *= -1;
+	after += (double)atoi(str.c_str());
+	return after;
+}
+
+void ScalarConverter::convert(std::string str)
+{
+	ScalarConverter obj;
+
+	if (ScalarConverter::isChar(str))
+	{
+		std::cout << obj.strToChar(str) << std::endl;
+	}
+	else if (ScalarConverter::isInt(str))
+	{
+		std::cout << obj.strToInt(str) << std::endl;
+	}
+	else if (ScalarConverter::isFloat(str))
+	{
+		std::cout << obj.strToFloat(str) << std::endl;
+	}
+	else if (ScalarConverter::isDouble(str))
+	{
+		std::cout << obj.strToDouble(str) << std::endl;
+	}
+
 }

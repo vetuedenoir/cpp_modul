@@ -18,6 +18,8 @@ int	main(int ac, char **av)
 	if (ac != 2)
 	{
 		std::cout << av[0] << " take one arguments" << std::endl;
+		return (0);
 	}
+	ScalarConverter::convert(av[1]);
 	return (0);
 }
