@@ -5,8 +5,8 @@
 #                                                     +:+ +:+         +:+      #
 #    By: kscordel <kscordel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/01/20 19:27:59 by kscordel          #+#    #+#              #
-#    Updated: 2024/01/29 19:55:14 by kscordel         ###   ########.fr        #
+#    Created: 2024/01/29 20:38:40 by kscordel          #+#    #+#              #
+#    Updated: 2024/01/29 20:38:41 by kscordel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ RM = rm -rf
 
 NAME = convert
 
-SRC = main.cpp ScalarConverter.cpp
+SRC = main.cpp Base.cpp A.cpp B.cpp C.cpp
 
 
 SRC_DIR = ./

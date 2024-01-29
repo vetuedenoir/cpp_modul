@@ -5,21 +5,25 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: kscordel <kscordel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/20 19:57:08 by kscordel          #+#    #+#             */
-/*   Updated: 2024/01/29 17:52:53 by kscordel         ###   ########.fr       */
+/*   Created: 2024/01/29 20:25:22 by kscordel          #+#    #+#             */
+/*   Updated: 2024/01/29 20:34:08 by kscordel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "Serializer.hpp"
 #include <iostream>
-#include "ScalarConverter.hpp"
 
-int	main(int ac, char **av)
+int	main()
 {
-	if (ac != 2)
-	{
-		std::cout << av[0] << " take one arguments" << std::endl;
-		return (0);
-	}
-	ScalarConverter::convert(av[1]);
+	Data px;
+	Data *pz;
+	uintptr_t	ptr;
+
+	px.id = 42;
+	px.name = "legende";
+	ptr = Serializer::serialize(&px);
+	pz = Serializer::deserialize(ptr);
+	std::cout << "id "<< pz->id << std::endl;
+	std::cout << "name "<< pz->name << std::endl;
 	return (0);
 }

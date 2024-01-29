@@ -6,7 +6,7 @@
 /*   By: kscordel <kscordel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 19:56:57 by kscordel          #+#    #+#             */
-/*   Updated: 2024/01/27 19:40:15 by kscordel         ###   ########.fr       */
+/*   Updated: 2024/01/29 19:22:47 by kscordel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 #include <cctype>
 #include <cstdlib>
 #include <math.h>
+#include <iomanip>
+#include <climits>
 
 class ScalarConverter
 {
@@ -25,10 +27,10 @@ class ScalarConverter
 	ScalarConverter	(const ScalarConverter &copie);
 	ScalarConverter&	operator= (const ScalarConverter &model);
 
-	char	strToChar(std::string str);
-	int		strToInt(std::string str);
-	float	strToFloat(std::string str);
-	double	strToDouble(std::string str);
+	void	strToChar(std::string str);
+	void	strToInt(std::string str);
+	void	strToFloat(std::string str);
+	void	strToDouble(std::string str);
 
 public:
 	~ScalarConverter();

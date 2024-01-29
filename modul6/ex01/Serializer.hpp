@@ -1,25 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Serializer.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kscordel <kscordel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/20 19:57:08 by kscordel          #+#    #+#             */
-/*   Updated: 2024/01/29 17:52:53 by kscordel         ###   ########.fr       */
+/*   Created: 2024/01/29 19:57:12 by kscordel          #+#    #+#             */
+/*   Updated: 2024/01/29 20:33:13 by kscordel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
-#include "ScalarConverter.hpp"
+#ifndef SERIALIZER_HPP
+# define SERIALIZER_HPP
 
-int	main(int ac, char **av)
+#include <stdint.h>
+#include <string>
+
+typedef struct Data
 {
-	if (ac != 2)
-	{
-		std::cout << av[0] << " take one arguments" << std::endl;
-		return (0);
-	}
-	ScalarConverter::convert(av[1]);
-	return (0);
-}
+	std::string name;
+	int			id;
+}		Data;
+
+class Serializer
+{
+	Serializer();
+	Serializer(const Serializer &copie);
+	Serializer&	operator= (const Serializer &model);
+public:
+	~Serializer();
+	static uintptr_t	serialize(Data* ptr);
+	static Data*		deserialize(uintptr_t raw);
+};
+
+#endif
