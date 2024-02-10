@@ -1,20 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   C.hpp                                              :+:      :+:    :+:   */
+/*   whatever.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kscordel <kscordel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/01 20:38:48 by kscordel          #+#    #+#             */
-/*   Updated: 2024/02/01 20:39:31 by kscordel         ###   ########.fr       */
+/*   Created: 2024/02/10 14:46:18 by kscordel          #+#    #+#             */
+/*   Updated: 2024/02/10 14:51:09 by kscordel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef C_HPP
-# define C_HPP
+#ifndef WHATEVER_HPP
+# define WHATEVER_HPP
 
-#include "Base.hpp"
 
-class C : public Base {};
+template <class T>
+void	swap(T &a, T &b)
+{
+	T	tmp;
+
+	tmp = a;
+	a = b;
+	b = tmp;
+}
+
+template <class T>
+T	&min(T &a, T &b)
+{
+	if (a < b)
+		return a;
+	else
+		return b;
+}
+
+template <class T>
+T	&max(T &a, T &b)
+{
+	if (a > b)
+		return a;
+	else
+		return b;
+}
 
 #endif

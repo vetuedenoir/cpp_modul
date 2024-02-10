@@ -6,7 +6,7 @@
 #    By: kscordel <kscordel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/29 20:38:40 by kscordel          #+#    #+#              #
-#    Updated: 2024/01/29 20:38:41 by kscordel         ###   ########.fr        #
+#    Updated: 2024/02/01 20:47:55 by kscordel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ RM = rm -rf
 
 NAME = convert
 
-SRC = main.cpp Base.cpp A.cpp B.cpp C.cpp
+SRC = main.cpp Base.cpp
 
 
 SRC_DIR = ./

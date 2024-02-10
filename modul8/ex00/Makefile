@@ -1,11 +1,23 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: kscordel <kscordel@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2024/02/10 14:45:23 by kscordel          #+#    #+#              #
+#    Updated: 2024/02/10 17:15:35 by kscordel         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 CXX = c++
-FLAGS = -Wall -Wextra -Werror -std=c++98
+FLAGS = -Wall -Wextra -Werror -g3 #-std=c++98
 CXXFLAGS = $(FLAGS) -MMD
 RM = rm -rf
 
-NAME = convert
+NAME = finder
 
-SRC = main.cpp Base.cpp A.cpp B.cpp C.cpp
+SRC = main.cpp
 
 
 SRC_DIR = ./
@@ -35,4 +47,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re%
+.PHONY: all clean fclean re
