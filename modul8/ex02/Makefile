@@ -5,8 +5,8 @@
 #                                                     +:+ +:+         +:+      #
 #    By: kscordel <kscordel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/02/15 13:11:49 by kscordel          #+#    #+#              #
-#    Updated: 2024/02/16 14:43:35 by kscordel         ###   ########.fr        #
+#    Created: 2024/02/16 14:43:44 by kscordel          #+#    #+#              #
+#    Updated: 2024/02/16 14:44:13 by kscordel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ RM = rm -rf
 
 NAME = Test
 
-SRC = main.cpp Span.cpp
+SRC = main.cpp
 
 
 SRC_DIR = ./
