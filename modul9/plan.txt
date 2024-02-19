@@ -1,0 +1,7 @@
+utilisation des container dans les exercices.
+
+ex00: deque
+
+ex01: Stack ou pile en francais
+
+ex02: vector et list
