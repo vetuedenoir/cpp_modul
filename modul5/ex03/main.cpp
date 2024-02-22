@@ -6,7 +6,7 @@
 /*   By: kscordel <kscordel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 17:53:00 by kscordel          #+#    #+#             */
-/*   Updated: 2024/01/20 17:53:01 by kscordel         ###   ########.fr       */
+/*   Updated: 2024/02/22 20:42:47 by kscordel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ int	main()
 		{
 			boss.signeForm(*N4);
 			boss.executeForm(*N4);
-			delete N3;
+			delete N4;
 		}
 	}
 	catch(const std::exception& e)
