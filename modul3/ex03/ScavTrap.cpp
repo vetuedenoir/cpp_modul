@@ -22,7 +22,7 @@ ScavTrap::ScavTrap () : ClapTrap()
 	std::cout << "ScavTrap DEFAULT CONSTUCTOR is born." << std::endl;
 }
 
-ScavTrap::ScavTrap (std::string name) : ClapTrap(name)
+ScavTrap::ScavTrap (std::string &name) : ClapTrap(name)
 {
 	hitPoints = 100;
 	energiePoints = 50;

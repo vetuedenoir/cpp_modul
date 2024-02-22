@@ -17,7 +17,7 @@ ClapTrap::ClapTrap () : name(""), hitPoints(10), energiePoints(10), attackDamage
 	std::cout << "ClapTrap DEFAULT CONSTUCTOR is born." << std::endl;
 }
 
-ClapTrap::ClapTrap (const std::string name) : name(name), hitPoints(10), energiePoints(10), attackDamage(0)
+ClapTrap::ClapTrap (const std::string &name) : name(name), hitPoints(10), energiePoints(10), attackDamage(0)
 {
 	std::cout << "ClapTrap " << name << " is born." << std::endl;
 }

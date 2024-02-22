@@ -21,7 +21,7 @@ ClapTrap::ClapTrap ()
 	std::cout << "ClapTrap DEFAULT CONSTUCTOR is born." << std::endl;
 }
 
-ClapTrap::ClapTrap (const std::string name) : name(name)
+ClapTrap::ClapTrap (const std::string &name) : name(name)
 {
 	hitPoints = 10;
 	energiePoints = 10;
@@ -51,13 +51,15 @@ ClapTrap& ClapTrap::operator= (const ClapTrap &model)
 
 void ClapTrap::attack(const std::string& target)
 {
-	if (energiePoints > 0)
+	if (energiePoints && hitPoints)
 	{
 		std::cout << "ClapTrap " << name << " attacks " << target
 			<< ", causing " << attackDamage << " points of damage!"
 			<< std::endl;
 		--energiePoints;
 	}
+	else if (!hitPoints)
+		std::cout << "ClapTrap " << name << " is KO!!! He can't attack" << std::endl;
 	else
 		std::cout << "ClapTrap " << name << " as not enough energie to attack "
 			<< target << "!" << std::endl;
@@ -77,8 +79,6 @@ void ClapTrap::takeDamage (unsigned int amount)
 		std::cout << "ClapTrap " << name << " received " << amount
 			<< " points of damage!" << std::endl;
 		hitPoints -= amount;
-		if (hitPoints == 0)
-			std::cout << "ClapTrap " << name << " is KO!!!" << std::endl;
 	}
 	else
 		std::cout << "ClapTrap " << name << " is already KO!" << std::endl;
@@ -86,13 +86,15 @@ void ClapTrap::takeDamage (unsigned int amount)
 
 void	ClapTrap::beRepaired (unsigned int amount)
 {
-	if (energiePoints > 0)
+	if (energiePoints && hitPoints)
 	{
 		std::cout << "ClapTrap " << name << " regained " <<  amount
 			<< " Hit points!" << std::endl;
 		--energiePoints;
 		hitPoints += amount;
 	}
+	else if (!hitPoints)
+		std::cout << "ClapTrap " << name << " is KO!!! He can't repair" << std::endl;
 	else
 		std::cout << "ClapTrap " << name << " as not enough energie to repair."
 			<< std::endl;

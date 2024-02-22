@@ -21,7 +21,7 @@ protected:
 	bool mode;
 	ScavTrap ();
  public:
-	ScavTrap (std::string name);
+	ScavTrap (std::string &name);
 	ScavTrap (const ScavTrap &copie);
 	~ScavTrap ();
 
