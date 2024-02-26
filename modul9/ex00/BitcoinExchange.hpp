@@ -21,7 +21,7 @@ public:
 	BitcoinExchange&	operator= (const BitcoinExchange &copie);
 
 	void	processe_imput(std::string &imput_file);
-	void	processe_line();
+	void	processe_line(const std::string &line);
 
 	
 };
