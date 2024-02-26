@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   BitcoinExchange.cpp                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kscordel <kscordel@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/02/26 18:46:33 by kscordel          #+#    #+#             */
+/*   Updated: 2024/02/26 18:46:34 by kscordel         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "BitcoinExchange.hpp"
 
 bool isBisextile(int annee)
@@ -142,17 +154,13 @@ BitcoinExchange::BitcoinExchange(const BitcoinExchange &model)
 	*this = model;
 }
 
-BitcoinExchange::~BitcoinExchange()
-{
-}
+BitcoinExchange::~BitcoinExchange() {}
 
 BitcoinExchange &BitcoinExchange::operator=(const BitcoinExchange &copie)
 {
 	data_base = copie.data_base;
 	return *this;
 }
-
-
 
 void	is_good_value(const std::string &value)
 {
@@ -202,11 +210,45 @@ void check_format_line(const std::string &line)
 	is_good_value(sval);
 }
 
+void	convert(float &exchange_rate, float &value, const std::string &line)
+{
+	std::cout << line.substr(0, 10) << " => " << value << " = " << value * exchange_rate << std::endl;
+}
+
+
+void	BitcoinExchange::search_and_convert(const std::string &line)
+{
+	float		exchange_rate;
+	float		value;
+	std::string	sub;
+
+	try
+	{
+		exchange_rate = data_base.at(line.substr(0, 10));
+		sub = line.substr(13);
+		value = strtof(sub.c_str(), NULL);
+		convert(exchange_rate, value, line);
+	}
+	catch(const std::exception& e)
+	{
+		std::map<std::string, float>::iterator pos;
+		
+		pos	= data_base.upper_bound(line.substr(0, 10));
+		if (pos != data_base.begin())
+			pos--;
+		exchange_rate = pos->second;
+		sub = line.substr(13);
+		value = strtof(sub.c_str(), NULL);
+		convert(exchange_rate, value, line);
+	}
+}
+
 void BitcoinExchange::processe_line(const std::string &line)
 {
 	try
 	{
 		check_format_line(line);
+		search_and_convert(line);
 	}
 	catch (const std::exception &e)
 	{
@@ -237,4 +279,3 @@ void BitcoinExchange::processe_imput(std::string &imput_file)
 			processe_line(line);
 	}
 }
-

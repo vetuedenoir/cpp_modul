@@ -1,35 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   RPN.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kscordel <kscordel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/26 18:46:23 by kscordel          #+#    #+#             */
-/*   Updated: 2024/02/26 18:46:24 by kscordel         ###   ########.fr       */
+/*   Created: 2024/02/26 18:52:36 by kscordel          #+#    #+#             */
+/*   Updated: 2024/02/26 19:47:32 by kscordel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "BitcoinExchange.hpp"
-#include <iostream>
+#ifndef RPN_HPP
+# define RPN_HPP
 
-int	main(int ac, char **av)
+#include <iostream>
+#include <string>
+#include <stack>
+#include <cstdlib>
+
+class RPN
 {
-	if (ac != 2)
-	{	
-		std::cout << "Error: could not open the file." << std::endl;
-		return 1;
-	}
-	std::string	arg(av[1]);
-	try{
-		BitcoinExchange exchange;
-		exchange.processe_imput(arg);
-	}
-	catch (std::exception& e)
-	{
-		std::cerr << e.what() << std::endl;
-		return 1;
-	}
-	return (0);
+	RPN();
+	std::stack<char> line;
+public:
+	RPN(const std::string &str);
+	RPN(const RPN &model);
+	~RPN();
+
+	RPN&	operator= (const RPN &copie);
+
 	
-}
+	
+};
+
+#endif
