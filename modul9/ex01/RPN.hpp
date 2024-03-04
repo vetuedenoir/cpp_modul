@@ -6,7 +6,7 @@
 /*   By: kscordel <kscordel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 18:52:36 by kscordel          #+#    #+#             */
-/*   Updated: 2024/02/26 19:47:32 by kscordel         ###   ########.fr       */
+/*   Updated: 2024/02/27 19:00:53 by kscordel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,19 +17,18 @@
 #include <string>
 #include <stack>
 #include <cstdlib>
+#include <sstream>
 
 class RPN
 {
 	RPN();
-	std::stack<char> line;
-public:
-	RPN(const std::string &str);
 	RPN(const RPN &model);
-	~RPN();
-
 	RPN&	operator= (const RPN &copie);
-
-	
+	//std::stack<char> line;
+public:
+	~RPN();
+	static void	print_calcule(const std::string &str);
+	static int	calcule(const std::string &str);
 	
 };
 

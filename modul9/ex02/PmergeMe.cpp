@@ -22,7 +22,6 @@ ui_pair_t&	operator+ (ui_pair_t &out, const int &add)
 }
 
 
-
 void	PMergeMe::fusion_pair(vit_pair_t &tab, unsigned int debut, unsigned int milieu, unsigned int fin)
 {
 	unsigned int i = 0;
@@ -37,16 +36,6 @@ void	PMergeMe::fusion_pair(vit_pair_t &tab, unsigned int debut, unsigned int mil
 	unsigned int limi = (milieu - debut);
 	unsigned int limj = (fin - milieu);
 
-	// std::cout << "gauche trie: "; 
-	// print_list(trie_g);
-	// std::cout << "  gauche suivie : "; 
-	// print_list(suiv_g);
-	// std::cout << std::endl;
-	// std::cout << "droite trie: "; 
-	// print_list(trie_d);
-	// std::cout << "  droite suivie : "; 
-	// print_list(suiv_d);
-	// std::cout << std::endl;
 	while (i < limi && j < limj)
 	{
 		comparaison++;
@@ -118,57 +107,40 @@ void	PMergeMe::dichotomie(std::vector<int> &container, size_t limit_a, it_vector
 
 void	PMergeMe::insertion_dichotomique(std::vector<int> &container, size_t debut_b)
 {
-	it_vector_t		it_a = container.begin();
-	it_vector_t		it_b = it_a + debut_b;
-	unsigned int	limite_a = debut_b;
-	unsigned int	limite_b = container.size();
-	//unsigned int	x = debut_b;
-	unsigned int	gr = 2;
-	unsigned int	gr_past = 1;
-	int				tmp;
-	unsigned int	limite_gr;
+	(void)container;
+	(void)debut_b;
+	 it_vector_t		it_a = container.begin();
+	 it_vector_t		it_b = it_a + debut_b;
+	// unsigned int	limite_a = debut_b;
+	// unsigned int	limite_b = container.size();
+	 //unsigned int	x = debut_b;
+	// unsigned int	gr = 2;
+	// unsigned int	gr_past = 1;
+	 int				tmp;
+	// unsigned int	limite_gr;
 	
-	tmp = container[debut_b++];
-	container.erase(it_b);
-	container.insert(it_a, tmp);
-	PMergeMe::print_list(container);
-	std::cout << " ok" << std::endl;
-	if (limite_b == 3)
-	{
-		tmp = container[debut_b];
-		if (container[0] < tmp)
-		{
-			tmp = container[debut_b];
-			container.erase(it_a + 2);
-			container.insert(it_a, tmp);
-		}
-		else if (container[1] < tmp)
-		{
-			tmp = container[debut_b];
-			container.erase(it_a + 2);
-			container.insert(it_a + 1, tmp);
-		}
-		PMergeMe::print_list(container);
-		std::cout << " ik" << std::endl;
-		return ;
-	}
-	while (debut_b != limite_b)
-	{
-		limite_gr = gr + debut_b;
-		if (limite_gr > limite_b)
-			limite_gr = limite_b;
-		while (debut_b != limite_gr)
-		{
-			dichotomie(container, limite_a, it_b + debut_b++);
-		}
-		gr_past *= 2;
-		gr += gr_past;
-			std::cout << " limit_a = " << limite_a << " limite_b = " << limite_b << std::endl; 
-	std::cout << " gr = " << gr << std::endl;
-	}
+	 tmp = container[debut_b++];
+	 container.erase(it_b);
+	 container.insert(it_a, tmp);
+	// PMergeMe::print_list(container);
+	// std::cout << " ok" << std::endl;
+	// while (debut_b != limite_b)
+	// {
+	// 	limite_gr = gr + debut_b;
+	// 	if (limite_gr > limite_b)
+	// 		limite_gr = limite_b;
+	// 	while (debut_b != limite_gr)
+	// 	{
+	// 		dichotomie(container, limite_a, it_b + debut_b++);
+	// 	}
+	// 	gr_past *= 2;
+	// 	gr += gr_past;
+	// 		std::cout << " limit_a = " << limite_a << " limite_b = " << limite_b << std::endl; 
+	// std::cout << " gr = " << gr << std::endl;
+	// }
 
-	std::cout << " limit_a = " << limite_a << " limite_b = " << limite_b << std::endl; 
-	std::cout << " gr = " << gr << std::endl;
+	// std::cout << " limit_a = " << limite_a << " limite_b = " << limite_b << std::endl; 
+	// std::cout << " gr = " << gr << std::endl;
 }
 
 void	PMergeMe::merge_insertion_sort(std::vector<int> &container)
@@ -178,26 +150,17 @@ void	PMergeMe::merge_insertion_sort(std::vector<int> &container)
 	it_vector_t itmid = itbeg + mid;
 	it_vector_t const_mid = itmid;
 
-	std::cout << "itmid = " << *itmid << std::endl;
+	// std::cout << "itmid = " << *itmid << std::endl;
 	swap_paire(itbeg, itmid, const_mid);
-	//swap_paire(itmid, itbeg, const_mid);
-
 	PMergeMe::print_list(container);
 	std::cout << std::endl;
 
 	itbeg = container.begin();
 	itmid = const_mid;
-
 	vit_pair_t	tab(itbeg, itmid);
-	//vit_pair_t	tab(itmid, itbeg);
-
-	  std::cout << "itmid = " << *itmid << std::endl;
 	merge_sortPair(tab, 0, mid);
 	insertion_dichotomique(container, mid);
-
 }
-
-
 
 void	PMergeMe::merge_insertion_sort(std::list<int> &container)
 {
@@ -215,3 +178,57 @@ void	PMergeMe::merge_insertion_sort(std::list<int> &container)
 	itmid = const_mid;
 
 }
+
+int	verif_arg(std::string str)
+{
+	int	i = 0;
+
+	if (str.size() > 11 || str.size() < 1)
+		throw ("Error: bad argument");
+	if (str[0] == '-')
+		throw ("Error: negative integer");
+	if (str[0] != '+' && !isdigit(str[0]))
+		throw ("Error: bad argument");
+	while (str[++i])
+	{
+		if (!isdigit(str[i]))
+			throw ("Error: bad argument");
+	}
+	long num = atol(str.c_str());
+	if (num > INT_MAX)
+		throw ("Error: bad argument");
+	return num;
+}
+
+template <class T1, class T2>
+void	initialisation1(T1 &cont1, T2 &cont2, char **av)
+{
+	int	i = 1;
+	int	num;
+	
+	while (av[i])
+	{
+		num = verif_arg(av[i]);
+		cont1.push_back(num);
+		cont2.push_back(num);
+		i++;
+	}
+}
+
+template <class T1, class T2>
+void	initialisation2(T1 &cont1, T2 &cont2, std::string arg)
+{
+	std::stringstream	stream(arg);
+	std::string		str;
+	int	num;
+
+	while (getline(stream, str, ' '))
+	{
+		num = verif_arg(str);
+		cont1.push_back(num);
+		cont2.push_back(num);
+	}
+}
+
+template void initialisation1(std::vector<int> &cont1, std::list<int> &cont2, char **av);
+template void initialisation2(std::vector<int> &cont1, std::list<int> &cont2, std::string arg);

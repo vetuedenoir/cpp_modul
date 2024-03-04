@@ -19,19 +19,35 @@ int	main(int ac, char **av)
 {
 	if (ac < 2)
 	{
-		std::cout << "this programe take a list of unsigned integer" << std::endl;
+		std::cout << "PmergeMe take a liste of unsigned integer in parameter" << std::endl;
 		return 1;
 	}
-	std::vector<int> vect;
-	std::list<int> liste;
-	create_list(vect, liste, av);
-	//PMergeMe::print_list(vect);
-	PMergeMe::print_list(vect);
+	std::vector<int>	vec;
+	std::list<int>	lis;
+	std::list<int>::iterator it;
+	try
+	{
+		if (ac > 2)
+			initialisation1(vec, lis, av);
+		else
+			initialisation2(vec, lis, av[1]);
+	}
+	catch (const std::exception *e)
+	{
+		std::cout << e << std::endl;
+		return 1;
+	}
+	catch (const char *e)
+	{
+		std::cout << e << std::endl;
+		return 1;
+	};
+	PMergeMe::print_list(vec);
 	std::cout << std::endl;
-	PMergeMe::merge_insertion_sort(vect);
+	PMergeMe::merge_insertion_sort(vec);
 	//PMergeMe::merge_insertion_sort(liste);
-	PMergeMe::print_list(vect);
-	std::cout << std::endl << PMergeMe::comparaison << std::endl;
+	PMergeMe::print_list(vec);
+	// std::cout << std::endl << PMergeMe::comparaison << std::endl;
 	// for (int i = 0; i < 0; i++)
 	// {
 	// 	try

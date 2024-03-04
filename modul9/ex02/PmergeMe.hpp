@@ -6,6 +6,8 @@
 #include <iostream>
 #include <cstdlib>
 #include <utility>
+#include <climits>
+#include <sstream>
 
 
 typedef	std::pair<unsigned int, unsigned int> ui_pair_t;
@@ -32,6 +34,7 @@ public:
 	static void	merge_insertion_sort(std::vector<int> &container);
 	static void	merge_insertion_sort(std::list<int> &container);
 
+	
 
 	template <typename IT> static void	swap_paire(IT &beg, IT &mid, const IT const_mid)
 	{
@@ -54,8 +57,8 @@ public:
 
 	template <typename T> static void	print_list(T &container)
 	{
-		typename T::iterator it = container.begin();
-			for (it = it; it != container.end(); it++)
+		typename T::iterator it;
+			for (it = container.begin(); it != container.end(); it++)
 			{
 				std::cout << *it << " ";
 			}
@@ -66,6 +69,12 @@ public:
 
 
 };
+
+template <class T1, class T2>
+	void	initialisation1(T1 &cont1, T2 &cont2, char **av);
+
+	template <class T1, class T2>
+	void	initialisation2(T1 &cont1, T2 &cont2, std::string arg);
 
 ui_pair_t&	operator+ (ui_pair_t &out, const int &add);
 
