@@ -1,5 +1,6 @@
 #include "PmergeMe.hpp"
 #include <iostream>
+#include <algorithm>
 
 void	create_list(std::vector<int> &cont1, std::list<int> &cont2, char **av)
 {
@@ -22,9 +23,9 @@ int	main(int ac, char **av)
 		std::cout << "PmergeMe take a liste of unsigned integer in parameter" << std::endl;
 		return 1;
 	}
-	std::vector<int>	vec;
-	std::list<int>	lis;
-	std::list<int>::iterator it;
+	std::vector<unsigned int>	vec;
+	std::list<unsigned int>	lis;
+	std::list<unsigned int>::iterator it;
 	try
 	{
 		if (ac > 2)
@@ -42,12 +43,17 @@ int	main(int ac, char **av)
 		std::cout << e << std::endl;
 		return 1;
 	};
-	PMergeMe::print_list(vec);
-	std::cout << std::endl;
+	// PMergeMe::print_list(vec);
+	// std::cout << std::endl;
+
+	clock_t	debut = clock();
 	PMergeMe::merge_insertion_sort(vec);
-	//PMergeMe::merge_insertion_sort(liste);
+	//sort(vec.begin(), vec.end());
+	clock_t fin = clock();
+	double	time = (fin - debut) /static_cast<double>(CLOCKS_PER_SEC / 1000);
+	std::cout << " sorted in " << time << " ml" << std::endl;
 	PMergeMe::print_list(vec);
-	// std::cout << std::endl << PMergeMe::comparaison << std::endl;
+	 std::cout << std::endl << PMergeMe::comparaison << std::endl;
 	// for (int i = 0; i < 0; i++)
 	// {
 	// 	try

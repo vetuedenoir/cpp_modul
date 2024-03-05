@@ -28,26 +28,26 @@ void	PMergeMe::fusion_pair(vit_pair_t &tab, unsigned int debut, unsigned int mil
 	unsigned int j = 0;
 	unsigned int t = debut;
 
-	std::vector<int> trie_g(tab.first + debut, tab.first + milieu);
-	std::vector<int> suiv_g(tab.second + debut, tab.second + milieu);
-	std::vector<int> trie_d(tab.first + milieu, tab.first + fin);
-	std::vector<int> suiv_d(tab.second + milieu, tab.second + fin);
+	std::vector<unsigned int> trie_g(tab.first + debut, tab.first + milieu);
+	std::vector<unsigned int> suiv_g(tab.second + debut, tab.second + milieu);
+	std::vector<unsigned int> trie_d(tab.first + milieu, tab.first + fin);
+	std::vector<unsigned int> suiv_d(tab.second + milieu, tab.second + fin);
 
 	unsigned int limi = (milieu - debut);
 	unsigned int limj = (fin - milieu);
 
 	while (i < limi && j < limj)
 	{
-		comparaison++;
-		if (trie_g[i] == trie_d[j])
-		{
-			*(tab.first + t) = trie_g[i];
-			*(tab.second + t++) = suiv_g[i++];
-			*(tab.first + t) = trie_d[j];
-			*(tab.second + t++) = suiv_d[j++]; 
-		}
-		else
-		{
+		// comparaison++;
+		// if (trie_g[i] == trie_d[j])
+		// {
+		// 	*(tab.first + t) = trie_g[i];
+		// 	*(tab.second + t++) = suiv_g[i++];
+		// 	*(tab.first + t) = trie_d[j];
+		// 	*(tab.second + t++) = suiv_d[j++]; 
+		// }
+		// else
+		// {
 			comparaison++;
 			if (trie_g[i] < trie_d[j])
 			{
@@ -59,7 +59,7 @@ void	PMergeMe::fusion_pair(vit_pair_t &tab, unsigned int debut, unsigned int mil
 				*(tab.first + t) = trie_d[j];
 				*(tab.second + t++) = suiv_d[j++];
 			}
-		}
+		// }
 	}
 	while (i < limi)
 	{
@@ -86,7 +86,7 @@ void	PMergeMe::merge_sortPair(vit_pair_t &tab, unsigned int debut, unsigned int 
 	}
 }
 
-void	PMergeMe::dichotomie(std::vector<int> &container, size_t limit_a, it_vector_t num)
+void	PMergeMe::dichotomie(std::vector<unsigned int> &container, size_t limit_a, it_vector_t num)
 {
 	//if (limit_a == 0)
 	(void)container;
@@ -105,7 +105,7 @@ void	PMergeMe::dichotomie(std::vector<int> &container, size_t limit_a, it_vector
 
 }
 
-void	PMergeMe::insertion_dichotomique(std::vector<int> &container, size_t debut_b)
+void	PMergeMe::insertion_dichotomique(std::vector<unsigned int> &container, size_t debut_b)
 {
 	(void)container;
 	(void)debut_b;
@@ -143,7 +143,7 @@ void	PMergeMe::insertion_dichotomique(std::vector<int> &container, size_t debut_
 	// std::cout << " gr = " << gr << std::endl;
 }
 
-void	PMergeMe::merge_insertion_sort(std::vector<int> &container)
+void	PMergeMe::merge_insertion_sort(std::vector<unsigned int> &container)
 {
 	size_t	mid = container.size() / 2;
 	it_vector_t itbeg = container.begin();
@@ -152,8 +152,8 @@ void	PMergeMe::merge_insertion_sort(std::vector<int> &container)
 
 	// std::cout << "itmid = " << *itmid << std::endl;
 	swap_paire(itbeg, itmid, const_mid);
-	PMergeMe::print_list(container);
-	std::cout << std::endl;
+	// PMergeMe::print_list(container);
+	// std::cout << std::endl;
 
 	itbeg = container.begin();
 	itmid = const_mid;
@@ -162,7 +162,7 @@ void	PMergeMe::merge_insertion_sort(std::vector<int> &container)
 	insertion_dichotomique(container, mid);
 }
 
-void	PMergeMe::merge_insertion_sort(std::list<int> &container)
+void	PMergeMe::merge_insertion_sort(std::list<unsigned int> &container)
 {
 	size_t	size = container.size();
 	size_t	mid = size / 2;
@@ -179,7 +179,7 @@ void	PMergeMe::merge_insertion_sort(std::list<int> &container)
 
 }
 
-int	verif_arg(std::string str)
+unsigned int	verif_arg(std::string str)
 {
 	int	i = 0;
 
@@ -203,8 +203,8 @@ int	verif_arg(std::string str)
 template <class T1, class T2>
 void	initialisation1(T1 &cont1, T2 &cont2, char **av)
 {
-	int	i = 1;
-	int	num;
+	unsigned int	i = 1;
+	unsigned int	num;
 	
 	while (av[i])
 	{
@@ -220,15 +220,16 @@ void	initialisation2(T1 &cont1, T2 &cont2, std::string arg)
 {
 	std::stringstream	stream(arg);
 	std::string		str;
-	int	num;
+	unsigned int	num;
 
-	while (getline(stream, str, ' '))
-	{
-		num = verif_arg(str);
-		cont1.push_back(num);
-		cont2.push_back(num);
-	}
+
+		while (getline(stream, str, ' '))
+		{
+			num = verif_arg(str);
+			cont1.push_back(num);
+			cont2.push_back(num);
+		}
 }
 
-template void initialisation1(std::vector<int> &cont1, std::list<int> &cont2, char **av);
-template void initialisation2(std::vector<int> &cont1, std::list<int> &cont2, std::string arg);
+template void initialisation1(std::vector<unsigned int> &cont1, std::list<unsigned int> &cont2, char **av);
+template void initialisation2(std::vector<unsigned int> &cont1, std::list<unsigned int> &cont2, std::string arg);
