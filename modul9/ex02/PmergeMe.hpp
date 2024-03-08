@@ -23,7 +23,7 @@ class PMergeMe
 	PMergeMe(const PMergeMe &model);
 	PMergeMe&	operator= (const PMergeMe &copie);
 
-	static void	dichotomie(std::vector<unsigned int> &container, size_t limit_a, it_vector_t num);
+	static void	dichotomie(std::vector<unsigned int> &container, size_t limit_a, it_vector_t &num);
 	static void	insertion_dichotomique(std::vector<unsigned int> &container, size_t debut_b);
 	static void	fusion_pair(vit_pair_t &tab, unsigned int debut, unsigned int milieu, unsigned int fin);
 	static void	merge_sortPair(vit_pair_t &tab, unsigned int debut, unsigned int fin);

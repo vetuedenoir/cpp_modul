@@ -38,28 +38,17 @@ void	PMergeMe::fusion_pair(vit_pair_t &tab, unsigned int debut, unsigned int mil
 
 	while (i < limi && j < limj)
 	{
-		// comparaison++;
-		// if (trie_g[i] == trie_d[j])
-		// {
-		// 	*(tab.first + t) = trie_g[i];
-		// 	*(tab.second + t++) = suiv_g[i++];
-		// 	*(tab.first + t) = trie_d[j];
-		// 	*(tab.second + t++) = suiv_d[j++]; 
-		// }
-		// else
-		// {
-			comparaison++;
-			if (trie_g[i] < trie_d[j])
-			{
-				*(tab.first + t) = trie_g[i];
-				*(tab.second + t++) = suiv_g[i++];
-			}
-			else
-			{
-				*(tab.first + t) = trie_d[j];
-				*(tab.second + t++) = suiv_d[j++];
-			}
-		// }
+		comparaison++;
+		if (trie_g[i] < trie_d[j])
+		{
+			*(tab.first + t) = trie_g[i];
+			*(tab.second + t++) = suiv_g[i++];
+		}
+		else
+		{
+			*(tab.first + t) = trie_d[j];
+			*(tab.second + t++) = suiv_d[j++];
+		}
 	}
 	while (i < limi)
 	{
@@ -86,60 +75,73 @@ void	PMergeMe::merge_sortPair(vit_pair_t &tab, unsigned int debut, unsigned int 
 	}
 }
 
-void	PMergeMe::dichotomie(std::vector<unsigned int> &container, size_t limit_a, it_vector_t num)
+void	PMergeMe::dichotomie(std::vector<unsigned int> &container, size_t s_recherche, it_vector_t &num)
 {
-	//if (limit_a == 0)
-	(void)container;
-	(void)limit_a;
-	(void)num;
-	// if (container[limit_a / 2] < *num && limit_a == 1)
-	// {
-	// 	container.erase()
-	// }
+	it_vector_t	it = container.begin();
+	int			debut = 0;
+	int		fin = s_recherche - 1;
+	int		mil;
+	unsigned int	tmp;
 
-
-	while (limit_a != 0)
+	while (debut <= fin)
 	{
-		
+		mil = (debut + fin) / 2;
+		if (*(it + mil) < *num)
+		{
+			debut = mil + 1;
+		}
+		else
+			fin = mil - 1;
+		comparaison++;
 	}
-
+	tmp = *num;
+	container.erase(num);
+	container.insert(it + debut, tmp);
 }
 
 void	PMergeMe::insertion_dichotomique(std::vector<unsigned int> &container, size_t debut_b)
 {
-	(void)container;
-	(void)debut_b;
-	 it_vector_t		it_a = container.begin();
-	 it_vector_t		it_b = it_a + debut_b;
-	// unsigned int	limite_a = debut_b;
-	// unsigned int	limite_b = container.size();
-	 //unsigned int	x = debut_b;
-	// unsigned int	gr = 2;
-	// unsigned int	gr_past = 1;
-	 int				tmp;
-	// unsigned int	limite_gr;
-	
-	 tmp = container[debut_b++];
-	 container.erase(it_b);
-	 container.insert(it_a, tmp);
-	// PMergeMe::print_list(container);
-	// std::cout << " ok" << std::endl;
-	// while (debut_b != limite_b)
-	// {
-	// 	limite_gr = gr + debut_b;
-	// 	if (limite_gr > limite_b)
-	// 		limite_gr = limite_b;
-	// 	while (debut_b != limite_gr)
-	// 	{
-	// 		dichotomie(container, limite_a, it_b + debut_b++);
-	// 	}
-	// 	gr_past *= 2;
-	// 	gr += gr_past;
-	// 		std::cout << " limit_a = " << limite_a << " limite_b = " << limite_b << std::endl; 
-	// std::cout << " gr = " << gr << std::endl;
-	// }
+	it_vector_t		it_a = container.begin();
+	it_vector_t		it_i;
+	const size_t	size = container.size();
+	size_t			index = 0;
+	size_t			i = 0;
+	size_t			g = 0;
+	bool			x = false;
+	unsigned int	sizes_groupes[] = {2, 2, 6, 10, 22, 42, 86, 170, 342, 682, 1366, 2730, 5462, 10922, 21846, 43690, 87382, 174762, 349526, 699050, 1398102, 2796202, 5592406, 11184810, 22369622, 44739242, 89478486, 178956970, 357913942, 715827882};
+	unsigned int	s_gr_search[] = {3, 7, 15, 31, 63, 127, 255, 511, 1023, 2047, 4095, 8191, 16383, 32767, 65735, 131071, 262143, 524287, 1048575, 2097151, 4194303, 8388607, 16777215, 33554431, 67108863, 134217727, 268435455, 536870911, 1073741823, 2147483647};
+	unsigned int	tmp;
 
-	// std::cout << " limit_a = " << limite_a << " limite_b = " << limite_b << std::endl; 
+	 tmp = container[debut_b];
+	 container.erase(it_a + debut_b);
+	 container.insert(it_a, tmp);
+	//  PMergeMe::print_list(container);
+	//  std::cout << std::endl;
+	while (i < 30)
+	{
+		index = debut_b + sizes_groupes[i];
+		if (index >= size)
+		{
+			x = true;
+			index = size - 1;
+		}
+		it_i = it_a + index;
+		for (g = index - debut_b; g > 0; g--)
+		{
+			tmp = *it_i;
+				if (s_gr_search[i] > debut_b)
+				dichotomie(container, debut_b, it_i);
+			else
+				dichotomie(container, s_gr_search[i], it_i);
+			debut_b++;
+		}
+		if (x)
+			break ;
+		i++;
+	}
+
+
+	// std::cout << "IT_B = " <<  *(it_a + debut_b + 2) << " et debut_b = " << debut_b << std::endl; 
 	// std::cout << " gr = " << gr << std::endl;
 }
 
@@ -223,12 +225,12 @@ void	initialisation2(T1 &cont1, T2 &cont2, std::string arg)
 	unsigned int	num;
 
 
-		while (getline(stream, str, ' '))
-		{
-			num = verif_arg(str);
-			cont1.push_back(num);
-			cont2.push_back(num);
-		}
+	while (getline(stream, str, ' '))
+	{
+		num = verif_arg(str);
+		cont1.push_back(num);
+		cont2.push_back(num);
+	}
 }
 
 template void initialisation1(std::vector<unsigned int> &cont1, std::list<unsigned int> &cont2, char **av);

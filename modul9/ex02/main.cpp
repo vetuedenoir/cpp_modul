@@ -52,28 +52,9 @@ int	main(int ac, char **av)
 	clock_t fin = clock();
 	double	time = (fin - debut) /static_cast<double>(CLOCKS_PER_SEC / 1000);
 	std::cout << " sorted in " << time << " ml" << std::endl;
-	PMergeMe::print_list(vec);
+
+	 PMergeMe::print_list(vec);
 	 std::cout << std::endl << PMergeMe::comparaison << std::endl;
-	// for (int i = 0; i < 0; i++)
-	// {
-	// 	try
-	// 	{
-	// 		std::vector<int> vect;
-	// 	std::list<int> liste;
-	// 	create_list(vect, liste, av);
-	// 	//PMergeMe::print_list(vect);
-	// 	PMergeMe::merge_insertion_sort(vect);
-	// 	PMergeMe::merge_insertion_sort(liste);
-	// 	//PMergeMe::print_list(vect);
-	// 	}
-	// 	catch(const std::exception& e)
-	// 	{
-	// 		std::cerr << e.what() << '\n';
-	// 	}
-		
-	// }
-
-
 	return 0;
 
 }
