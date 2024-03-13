@@ -17,7 +17,7 @@ class PMergeMe
 	typedef typename std::list<unsigned int>::iterator it_list_t;
 	typedef typename std::vector<unsigned int>::iterator it_vector_t;
 	typedef	std::pair<it_vector_t, it_vector_t> vit_pair_t;
-	
+	typedef std::pair<it_list_t, it_list_t> lit_pair_t;
 
 	PMergeMe();
 	PMergeMe(const PMergeMe &model);
@@ -25,8 +25,13 @@ class PMergeMe
 
 	static void	dichotomie(std::vector<unsigned int> &container, size_t limit_a, it_vector_t &num);
 	static void	insertion_dichotomique(std::vector<unsigned int> &container, size_t debut_b);
-	static void	fusion_pair(vit_pair_t &tab, unsigned int debut, unsigned int milieu, unsigned int fin);
+	static void	fusion_pair(vit_pair_t &tab, unsigned int &debut, unsigned int &milieu, unsigned int &fin);
 	static void	merge_sortPair(vit_pair_t &tab, unsigned int debut, unsigned int fin);
+
+	//static void	dichotomie(std::list<unsigned int> &container, size_t limit_a, it_list_t &num);
+	//static void	insertion_dichotomique(std::list<unsigned int> &container, size_t debut_b);
+	//static void	fusion_pair(lit_pair_t &tab, unsigned int &debut, unsigned int &milieu, unsigned int &fin);
+	static void	merge_sortPair(lit_pair_t &tab, unsigned int debut, unsigned int fin);
 
 public:
 	~PMergeMe();
@@ -42,7 +47,6 @@ public:
 	
 		while (beg != const_mid)
 		{
-			// if (*beg < *mid)
 			if (*beg < *mid)
 			{
 				tmp = *mid;
@@ -62,12 +66,8 @@ public:
 			{
 				std::cout << *it << " ";
 			}
-		//	std::cout << std::endl;
+			std::cout << std::endl;
 	};
-
-
-
-
 };
 
 template <class T1, class T2>

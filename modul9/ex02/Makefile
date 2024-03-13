@@ -1,5 +1,5 @@
 CXX = c++
-FLAGS = -g3 #-Wall -Wextra -Werror #-std=c++98
+FLAGS =  #-Wall -Wextra -Werror #-std=c++98 -g3
 CXXFLAGS = $(FLAGS) -MMD
 RM = rm -rf
 

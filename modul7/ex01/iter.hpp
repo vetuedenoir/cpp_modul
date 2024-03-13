@@ -16,7 +16,7 @@
 # include <iostream>
 
 template <class T>
-void	print(T arg)
+void	print(T &arg)
 {
 	std::cout << arg << std::endl;
 }
