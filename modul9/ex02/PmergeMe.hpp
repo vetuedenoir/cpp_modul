@@ -3,21 +3,21 @@
 
 #include <vector>
 #include <list>
+#include <deque>
 #include <iostream>
 #include <cstdlib>
 #include <utility>
 #include <climits>
 #include <sstream>
 
-
 typedef	std::pair<unsigned int, unsigned int> ui_pair_t;
 
 class PMergeMe
 {
-	typedef typename std::list<unsigned int>::iterator it_list_t;
+	typedef typename std::deque<unsigned int>::iterator it_deq_t;
 	typedef typename std::vector<unsigned int>::iterator it_vector_t;
 	typedef	std::pair<it_vector_t, it_vector_t> vit_pair_t;
-	typedef std::pair<it_list_t, it_list_t> lit_pair_t;
+	typedef std::pair<it_deq_t, it_deq_t> deqt_pair_t;
 
 	PMergeMe();
 	PMergeMe(const PMergeMe &model);
@@ -28,16 +28,16 @@ class PMergeMe
 	static void	fusion_pair(vit_pair_t &tab, unsigned int &debut, unsigned int &milieu, unsigned int &fin);
 	static void	merge_sortPair(vit_pair_t &tab, unsigned int debut, unsigned int fin);
 
-	//static void	dichotomie(std::list<unsigned int> &container, size_t limit_a, it_list_t &num);
-	//static void	insertion_dichotomique(std::list<unsigned int> &container, size_t debut_b);
-	//static void	fusion_pair(lit_pair_t &tab, unsigned int &debut, unsigned int &milieu, unsigned int &fin);
-	static void	merge_sortPair(lit_pair_t &tab, unsigned int debut, unsigned int fin);
+	static void	dichotomie(std::deque<unsigned int> &container, size_t limit_a, it_deq_t &num);
+	static void	insertion_dichotomique(std::deque<unsigned int> &container, size_t debut_b);
+	static void	fusion_pair(deqt_pair_t &tab, unsigned int &debut, unsigned int &milieu, unsigned int &fin);
+	static void	merge_sortPair(deqt_pair_t &tab, unsigned int debut, unsigned int fin);
 
 public:
 	~PMergeMe();
 	static	unsigned int comparaison;
 	static void	merge_insertion_sort(std::vector<unsigned int> &container);
-	static void	merge_insertion_sort(std::list<unsigned int> &container);
+	static void	merge_insertion_sort(std::deque<unsigned int> &container);
 
 	
 
@@ -62,11 +62,11 @@ public:
 	template <typename T> static void	print_list(T &container)
 	{
 		typename T::iterator it;
-			for (it = container.begin(); it != container.end(); it++)
-			{
-				std::cout << *it << " ";
-			}
-			std::cout << std::endl;
+		for (it = container.begin(); it != container.end(); it++)
+		{
+			std::cout << *it << " ";
+		}
+		std::cout << std::endl;
 	};
 };
 
@@ -75,8 +75,6 @@ template <class T1, class T2>
 
 	template <class T1, class T2>
 	void	initialisation2(T1 &cont1, T2 &cont2, std::string arg);
-
-ui_pair_t&	operator+ (ui_pair_t &out, const int &add);
 
 
 #endif
