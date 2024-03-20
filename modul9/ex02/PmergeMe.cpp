@@ -1,5 +1,17 @@
 #include "PmergeMe.hpp"
 
+template <typename T> static void	print(T debut, T fin)
+{
+	int i = 0;
+		while (debut < fin)
+		{
+			std::cout << *debut << " ";
+			debut++;
+			i++;
+		}
+		std::cout << " i =  " << i<< std::endl;
+	};
+
 unsigned int PMergeMe::comparaison = 0;
 
 PMergeMe::PMergeMe() {}
@@ -187,6 +199,9 @@ void	PMergeMe::insertion_dichotomique(std::deque<unsigned int> &container, size_
 	container.erase(it_a + debut_b);
 	container.insert(it_a, tmp);
 	it_a = container.begin();
+	PMergeMe::print_list(container);
+	std::cout << "\n avant insertion dicho\n" << std::endl;
+
 	while (i < 30)
 	{
 		
@@ -197,10 +212,22 @@ void	PMergeMe::insertion_dichotomique(std::deque<unsigned int> &container, size_
 			index = size - 1;
 		}
 		it_i = container.begin() + index;
+		if (i == 9)
+		{
+			PMergeMe::print_list(container);
+			std::cout << "\n" << std::endl;
+		}
 		for (g = index - debut_b; g > 0; g--)
 		{
+			
 			if (s_gr_search[i] > debut_b)
 			{
+				// PMergeMe::print_list(container);
+				std::cout << "\n i = " << i << " groupe de cherche  = " << s_gr_search[i] <<std::endl;
+				g = std::distance(container.begin() + debut_b - 1, container.end());
+
+				// print(container.begin() + debut_b - 1, container.end());
+				// std::cout << "\n--------------------------------------------------------------------------------------------------------------\n" << std::endl;
 				while (g > 0)
 				{
 					it_i = container.end() - 1;
@@ -208,6 +235,8 @@ void	PMergeMe::insertion_dichotomique(std::deque<unsigned int> &container, size_
 					g--;
 					debut_b++;
 				}
+				std::cout << "last = " << *it_i << std::endl; 
+
 				break ;
 			}
 			else
@@ -215,9 +244,9 @@ void	PMergeMe::insertion_dichotomique(std::deque<unsigned int> &container, size_
 				dichotomie(container, s_gr_search[i], it_i);
 				it_i--;
 			}
-			debut_b++;
+			//debut_b++;
 		}
-		//debut_b += sizes_groupes[i];
+		debut_b += sizes_groupes[i];
 		if (x)
 			break ;
 		i++;
