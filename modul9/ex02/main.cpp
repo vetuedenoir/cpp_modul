@@ -1,10 +1,4 @@
 #include "PmergeMe.hpp"
-#include <iostream>
-#include <algorithm>
-
-#include <iostream>
-#include <list>
-
 
 int	main(int ac, char **av)
 {
@@ -14,14 +8,14 @@ int	main(int ac, char **av)
 		return 1;
 	}
 	std::vector<unsigned int>	vec;
-	std::deque<unsigned int>	lis;
+	std::deque<unsigned int>	deq;
 	size_t						size;
 	try
 	{
 		if (ac > 2)
-			initialisation1(vec, lis, av);
+			initialisation1(vec, deq, av);
 		else
-			initialisation2(vec, lis, av[1]);
+			initialisation2(vec, deq, av[1]);
 		size = vec.size();
 	}
 	catch (const std::exception *e)
@@ -35,27 +29,23 @@ int	main(int ac, char **av)
 		return 1;
 	};
 	std::cout << "Before: "; 
-	//PMergeMe::print_list(vec);
+	PMergeMe::print_list(vec);
 
 	clock_t	debut = clock();
 	PMergeMe::merge_insertion_sort(vec);
 	clock_t fin = clock();
 	double	time_vector = (fin - debut) /static_cast<double>(CLOCKS_PER_SEC / 1000);
-	std::cout << std::endl << "nombre de comparaison > " <<  PMergeMe::comparaison << std::endl;
-	PMergeMe::comparaison = 0;
 	
 	debut = clock();
-	PMergeMe::merge_insertion_sort(lis);
+	PMergeMe::merge_insertion_sort(deq);
 	fin = clock();
 	double time_deque = (fin - debut) /static_cast<double>(CLOCKS_PER_SEC / 1000);
 
 	std::cout << "After: "; 
-	PMergeMe::print_list(lis);
+	PMergeMe::print_list(deq);
 
 	std::cout << "Time to process a range of " << size << " elements with std::vector : " << time_vector << " ml" << std::endl;
 	std::cout << "Time to process a range of " << size << " elements with std::deque : " << time_deque << " ml" << std::endl;
-
-	std::cout << std::endl << "nombre de comparaison > " <<  PMergeMe::comparaison << std::endl;
 	return 0;
 
 }

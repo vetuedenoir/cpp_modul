@@ -2,15 +2,12 @@
 # define PMERGEME_HPP
 
 #include <vector>
-#include <list>
 #include <deque>
 #include <iostream>
 #include <cstdlib>
 #include <utility>
 #include <climits>
 #include <sstream>
-
-typedef	std::pair<unsigned int, unsigned int> ui_pair_t;
 
 class PMergeMe
 {
@@ -70,11 +67,37 @@ public:
 	};
 };
 
+unsigned int	verif_arg(std::string str);
+
 template <class T1, class T2>
-	void	initialisation1(T1 &cont1, T2 &cont2, char **av);
+void	initialisation1(T1 &cont1, T2 &cont2, char **av)
+{
+	unsigned int	i = 1;
+	unsigned int	num;
+	
+	while (av[i])
+	{
+		num = verif_arg(av[i]);
+		cont1.push_back(num);
+		cont2.push_back(num);
+		i++;
+	}
+}
 
-	template <class T1, class T2>
-	void	initialisation2(T1 &cont1, T2 &cont2, std::string arg);
+template <class T1, class T2>
+void	initialisation2(T1 &cont1, T2 &cont2, std::string arg)
+{
+	std::stringstream	stream(arg);
+	std::string		str;
+	unsigned int	num;
 
+
+	while (getline(stream, str, ' '))
+	{
+		num = verif_arg(str);
+		cont1.push_back(num);
+		cont2.push_back(num);
+	}
+}
 
 #endif

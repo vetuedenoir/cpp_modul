@@ -1,12 +1,11 @@
 CXX = c++
-FLAGS = -g3 -Wall -Wextra -Werror #-std=c++98 
+FLAGS = -Wall -Wextra -Werror -std=c++98 
 CXXFLAGS = $(FLAGS) -MMD
 RM = rm -rf
 
 NAME = PmergeMe
 
 SRC = main.cpp PmergeMe.cpp
-
 
 SRC_DIR = ./
 SRCS = $(addprefix $(SRC_DIR), $(SRC))
