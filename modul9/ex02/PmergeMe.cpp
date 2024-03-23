@@ -1,7 +1,5 @@
 #include "PmergeMe.hpp"
 
-unsigned int PMergeMe::comparaison = 0;
-
 PMergeMe::PMergeMe() {}
 
 PMergeMe::PMergeMe(const PMergeMe &model) {(void)model;}
@@ -31,7 +29,6 @@ void	PMergeMe::dichotomie(std::vector<unsigned int> &container, size_t s_recherc
 		}
 		else
 			fin = mil - 1;
-		comparaison++;
 	}
 	tmp = *num;
 	container.erase(num);
@@ -45,7 +42,7 @@ void	PMergeMe::insertion_dichotomique(std::vector<unsigned int> &container, size
 	const size_t	size = container.size();
 	size_t			index = 0;
 	size_t			i = 0;
-	size_t			g = 0;
+	long			g = 0;
 	bool			x = false;
 	unsigned int	sizes_groupes[] = {2, 2, 6, 10, 22, 42, 86, 170, 342, 682, 1366, 2730, 5462, 10922, 21846, 43690, 87382, 174762, 349526, 699050, 1398102, 2796202, 5592406, 11184810, 22369622, 44739242, 89478486, 178956970, 357913942, 715827882};
 	unsigned int	s_gr_search[] = {3, 7, 15, 31, 63, 127, 255, 511, 1023, 2047, 4095, 8191, 16383, 32767, 65735, 131071, 262143, 524287, 1048575, 2097151, 4194303, 8388607, 16777215, 33554431, 67108863, 134217727, 268435455, 536870911, 1073741823, 2147483647};
@@ -95,7 +92,6 @@ void	PMergeMe::fusion_pair(vit_pair_t &tab, unsigned int &debut, unsigned int &m
 
 	while (i < limi && j < limj)
 	{
-		comparaison++;
 		if (trie_g[i] < trie_d[j])
 		{
 			*(tab.first + t) = trie_g[i];
@@ -165,7 +161,6 @@ void	PMergeMe::dichotomie(std::deque<unsigned int> &container, size_t s_recherch
 		}
 		else
 			fin = mil - 1;
-		comparaison++;
 	}
 	tmp = *num;
 	container.erase(num);
@@ -179,7 +174,7 @@ void	PMergeMe::insertion_dichotomique(std::deque<unsigned int> &container, size_
 	const size_t	size = container.size();
 	size_t			index = 0;
 	size_t			i = 0;
-	size_t			g = 0;
+	long			g = 0;
 	bool			x = false;
 	unsigned int	sizes_groupes[] = {2, 2, 6, 10, 22, 42, 86, 170, 342, 682, 1366, 2730, 5462, 10922, 21846, 43690, 87382, 174762, 349526, 699050, 1398102, 2796202, 5592406, 11184810, 22369622, 44739242, 89478486, 178956970, 357913942, 715827882};
 	unsigned int	s_gr_search[] = {3, 7, 15, 31, 63, 127, 255, 511, 1023, 2047, 4095, 8191, 16383, 32767, 65735, 131071, 262143, 524287, 1048575, 2097151, 4194303, 8388607, 16777215, 33554431, 67108863, 134217727, 268435455, 536870911, 1073741823, 2147483647};
@@ -201,8 +196,9 @@ void	PMergeMe::insertion_dichotomique(std::deque<unsigned int> &container, size_
 		{
 			if (s_gr_search[i] > debut_b)
 			{
+				g = std::distance(container.begin() + debut_b, container.end());
 				while (g > 0)
-				{
+				{	
 					it_i = container.end() - 1;
 					dichotomie(container, debut_b, it_i);
 					g--;
@@ -241,7 +237,6 @@ void	PMergeMe::fusion_pair(deqt_pair_t &tab, unsigned int &debut, unsigned int &
 
 	while (i < limi && j < limj)
 	{
-		comparaison++;
 		if (trie_g[i] < trie_d[j])
 		{
 			*(tab.first + t) = trie_g[i];

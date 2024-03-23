@@ -11,8 +11,8 @@
 
 class PMergeMe
 {
-	typedef typename std::deque<unsigned int>::iterator it_deq_t;
-	typedef typename std::vector<unsigned int>::iterator it_vector_t;
+	typedef std::deque<unsigned int>::iterator it_deq_t;
+	typedef std::vector<unsigned int>::iterator it_vector_t;
 	typedef	std::pair<it_vector_t, it_vector_t> vit_pair_t;
 	typedef std::pair<it_deq_t, it_deq_t> deqt_pair_t;
 
@@ -32,7 +32,6 @@ class PMergeMe
 
 public:
 	~PMergeMe();
-	static	unsigned int comparaison;
 	static void	merge_insertion_sort(std::vector<unsigned int> &container);
 	static void	merge_insertion_sort(std::deque<unsigned int> &container);
 
@@ -52,7 +51,6 @@ public:
 			}
 			beg++;
 			mid++;
-			comparaison++;
 		}
 	};
 
