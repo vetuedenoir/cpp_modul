@@ -27,64 +27,14 @@ RPN&	RPN::operator= (const RPN &copie)
 	return *this;
 }
 
-void	RPN::print_calcule(const std::string &str)
+void	print_stack(std::stack<int> st)
 {
-	std::stack<int>	st;
-	std::istringstream stream(str);
-	char	c;
-	int		a = 0;
-
-	while (stream.get(c))
+	while (!st.empty())
 	{
-		if (c == ' ')
-			continue ;
-		if (stream.peek() == ' ' || stream.peek() == -1)
-		{
-			if (isdigit(c))
-				st.push(atoi(&c));
-			else
-			{	
-				if (st.size() < 2)
-					throw ("Error");
-				switch (c)
-				{
-					case '*':
-						a = st.top();
-					st.pop();
-						a *= st.top();
-						st.pop();
-						st.push(a);
-						break ;	
-					case '/':
-						a = st.top();
-						st.pop();
-						a /= st.top();
-						st.pop();
-						st.push(a);
-						break ;
-					case '+':
-						a = st.top();
-						st.pop();
-						a += st.top();
-						st.pop();
-						st.push(a);
-						break ;
-					case '-':
-						a = st.top();
-						st.pop();
-						a -= st.top();
-						st.pop();
-						st.push(a);
-						break ;
-					default:
-						throw ("Error");
-				}
-			}
-		}
-		else
-			throw ("Error");
+		std::cout << ' ' << st.top();
+		st.pop();
 	}
-	std::cout << st.top() << std::endl;
+	std::cout << std::endl;
 }
 
 int	RPN::calcule(const std::string &str)
@@ -93,6 +43,7 @@ int	RPN::calcule(const std::string &str)
 	std::istringstream stream(str);
 	char	c;
 	int		a = 0;
+	int		b = 0;
 
 	while (stream.get(c))
 	{
@@ -105,44 +56,50 @@ int	RPN::calcule(const std::string &str)
 			else
 			{	
 				if (st.size() < 2)
-					throw ("Error");
+					throw ParseException();
 				switch (c)
 				{
 					case '*':
 						a = st.top();
-					st.pop();
-						a *= st.top();
 						st.pop();
-						st.push(a);
+						b = st.top();
+						st.pop();
+						b *= a;
+						st.push(b);
 						break ;	
 					case '/':
 						a = st.top();
+						if (a == 0)
+							throw ParseException();
 						st.pop();
-						a /= st.top();
+						b = st.top();
 						st.pop();
-						st.push(a);
+						b /= a;
+						st.push(b);
 						break ;
 					case '+':
 						a = st.top();
 						st.pop();
-						a += st.top();
+						b = st.top();
 						st.pop();
-						st.push(a);
+						b += a;
+						st.push(b);
 						break ;
 					case '-':
 						a = st.top();
 						st.pop();
-						a -= st.top();
+						b = st.top();
 						st.pop();
-						st.push(a);
+						b -= a;
+						st.push(b);
 						break ;
 					default:
-						throw ("Error");
+						throw ParseException();
 				}
 			}
 		}
 		else
-			throw ("Error");
+			throw ParseException();
 	}
 	return (st.top());
 }

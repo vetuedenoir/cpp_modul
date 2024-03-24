@@ -18,17 +18,20 @@
 #include <stack>
 #include <cstdlib>
 #include <sstream>
+#include <exception>
 
 class RPN
 {
 	RPN();
 	RPN(const RPN &model);
 	RPN&	operator= (const RPN &copie);
-	//std::stack<char> line;
 public:
 	~RPN();
-	static void	print_calcule(const std::string &str);
 	static int	calcule(const std::string &str);
+	class ParseException : public std::exception {
+		public:
+		virtual const char* what() const throw() {return "Error";}; 
+	};
 	
 };
 
