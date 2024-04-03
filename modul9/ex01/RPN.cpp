@@ -37,13 +37,13 @@ void	print_stack(std::stack<int> st)
 	std::cout << std::endl;
 }
 
-int	RPN::calcule(const std::string &str)
+long	RPN::calcule(const std::string &str)
 {
-	std::stack<int>	st;
+	std::stack<long>	st;
 	std::istringstream stream(str);
 	char	c;
-	int		a = 0;
-	int		b = 0;
+	long	a = 0;
+	long	b = 0;
 
 	while (stream.get(c))
 	{
@@ -57,49 +57,36 @@ int	RPN::calcule(const std::string &str)
 			{	
 				if (st.size() < 2)
 					throw ParseException();
+				a = st.top();
+				st.pop();
+				b = st.top();
+				st.pop();
 				switch (c)
 				{
-					case '*':
-						a = st.top();
-						st.pop();
-						b = st.top();
-						st.pop();
+					case '*':				
 						b *= a;
-						st.push(b);
 						break ;	
 					case '/':
-						a = st.top();
 						if (a == 0)
 							throw ParseException();
-						st.pop();
-						b = st.top();
-						st.pop();
 						b /= a;
-						st.push(b);
 						break ;
 					case '+':
-						a = st.top();
-						st.pop();
-						b = st.top();
-						st.pop();
 						b += a;
-						st.push(b);
 						break ;
 					case '-':
-						a = st.top();
-						st.pop();
-						b = st.top();
-						st.pop();
 						b -= a;
-						st.push(b);
 						break ;
 					default:
 						throw ParseException();
 				}
+				st.push(b);
 			}
 		}
 		else
 			throw ParseException();
 	}
+	if (st.empty())
+		throw ParseException();
 	return (st.top());
 }

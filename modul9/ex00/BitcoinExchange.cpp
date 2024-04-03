@@ -35,6 +35,8 @@ bool isDatePossible(const std::string &date)
 	annee = atoi(cdate);
 	mois = atoi(&cdate[5]);
 	jour = atoi(&cdate[8]);
+	if (mois == 0 || jour == 0)
+		return false;
 	if (mois > 12 || jour > 31)
 		return false;
 	if ((mois == 1 || mois == 3 || mois == 5 || mois == 7 || \
@@ -78,7 +80,7 @@ BitcoinExchange::BitcoinExchange()
 	std::string date;
 	std::string sval;
 	size_t		f;
-	float		value;
+	double		value;
 	char		*endptr = NULL;
 
 	if (!flue.is_open())
@@ -101,12 +103,12 @@ BitcoinExchange::BitcoinExchange()
 			throw std::runtime_error("Error: impossible date data_base");
 		sval = line.substr(f + 1);
 		const char *str = sval.c_str();
-		value = strtof(str, &endptr);
+		value = strtod(str, &endptr);
 		if (str + sval.size() != endptr)
 			throw std::runtime_error("Error: invalide format data_base");
 		if (value < 0)
 			throw std::runtime_error("Error: impossible value data_base");
-		data_base.insert(std::pair<std::string, float>(date, value));
+		data_base.insert(std::pair<std::string, double>(date, value));
 	}
 }
 
@@ -116,7 +118,7 @@ BitcoinExchange::BitcoinExchange(std::string &file_base)
 	std::string line;
 	std::string date;
 	std::string sval;
-	float value;
+	double value;
 	size_t	f;
 	char	*endptr = NULL;
 
@@ -140,12 +142,12 @@ BitcoinExchange::BitcoinExchange(std::string &file_base)
 			throw std::runtime_error("Error: impossible date data_base");
 		sval = line.substr(f + 1);
 		const char *str = sval.c_str();
-		value = strtof(str, &endptr);
+		value = strtod(str, &endptr);
 		if (str  + sval.size() != endptr)
 			throw std::runtime_error("Error: invalide format data_base");
 		if (value < 0)
 			throw std::runtime_error("Error: impossible value data_base");
-		data_base.insert(std::pair<std::string, float>(date, value));
+		data_base.insert(std::pair<std::string, double>(date, value));
 	}
 }
 
@@ -164,7 +166,7 @@ BitcoinExchange &BitcoinExchange::operator=(const BitcoinExchange &copie)
 
 void	is_good_value(const std::string &value)
 {
-	float		nb;
+	double		nb;
 	char		*endptr = NULL;
 	const char	*cstr = value.c_str();
 	size_t		point;
@@ -173,12 +175,12 @@ void	is_good_value(const std::string &value)
 		throw std::runtime_error("Error: bad input");
 	if (value[1] == ' ' || value[1] == '\t')
 		throw std::runtime_error("Error: bad input");
-	nb = strtof(cstr, &endptr);
+	nb = strtod(cstr, &endptr);
 	if (endptr != cstr + value.size())
 		throw std::runtime_error("Error: bad input");
 	if (nb < 0)
 		throw ("Error: not a positive number.");
-	if (nb > 1000)
+	if (nb >= 1000.00000001)
 		throw ("Error: too large a number.");
 	point = value.find('.');
 	if (point != std::string::npos)
@@ -210,35 +212,35 @@ void check_format_line(const std::string &line)
 	is_good_value(sval);
 }
 
-void	convert(float &exchange_rate, float &value, const std::string &line)
+void	convert(double &exchange_rate, double &value, const std::string &line)
 {
-	std::cout << line.substr(0, 10) << " => " << value << " = " << value * exchange_rate << std::endl;
+	std::cout << line.substr(0, 10) << " => " << value << " = " << std::setprecision(8) << value * exchange_rate << std::endl;
 }
 
 
 void	BitcoinExchange::search_and_convert(const std::string &line)
 {
-	float		exchange_rate;
-	float		value;
+	double		exchange_rate;
+	double		value;
 	std::string	sub;
 
 	try
 	{
 		exchange_rate = data_base.at(line.substr(0, 10));
 		sub = line.substr(13);
-		value = strtof(sub.c_str(), NULL);
+		value = strtod(sub.c_str(), NULL);
 		convert(exchange_rate, value, line);
 	}
 	catch(const std::exception& e)
 	{
-		std::map<std::string, float>::iterator pos;
+		std::map<std::string, double>::iterator pos;
 		
 		pos	= data_base.upper_bound(line.substr(0, 10));
 		if (pos != data_base.begin())
 			pos--;
 		exchange_rate = pos->second;
 		sub = line.substr(13);
-		value = strtof(sub.c_str(), NULL);
+		value = strtod(sub.c_str(), NULL);
 		convert(exchange_rate, value, line);
 	}
 }

@@ -7,8 +7,8 @@
 int	main(int ac, char **av)
 {
 	size_t	i = 1;
-	int		num;
-	int		n = INT_MIN;
+	long		num;
+	long		n = INT_MIN;
 
 	if (ac == 1)
 	{
@@ -33,7 +33,7 @@ int	main(int ac, char **av)
 	}
 	while (av[i])
 	{
-		num = atoi(av[i]);
+		num = atol(av[i]);
 		if (num < n)
 		{
 			std::cout << "la liste n est pas trier" << std::endl;

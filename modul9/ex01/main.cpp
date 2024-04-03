@@ -22,6 +22,7 @@ int	main(int ac, char **av, char **envp)
 	}
 	try
 	{
+		
 		std::cout << RPN::calcule(av[1]) << std::endl;
 	}
 	catch (const std::exception &e)

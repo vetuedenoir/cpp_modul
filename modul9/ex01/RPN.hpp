@@ -27,7 +27,7 @@ class RPN
 	RPN&	operator= (const RPN &copie);
 public:
 	~RPN();
-	static int	calcule(const std::string &str);
+	static long	calcule(const std::string &str);
 	class ParseException : public std::exception {
 		public:
 		virtual const char* what() const throw() {return "Error";}; 

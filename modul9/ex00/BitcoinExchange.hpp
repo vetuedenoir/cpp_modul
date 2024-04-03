@@ -19,11 +19,12 @@
 #include <fstream>
 #include <exception>
 #include <cstdlib>
+#include <iomanip>
 
 
 class BitcoinExchange
 {
-	std::map <std::string, float> data_base;
+	std::map <std::string, double> data_base;
 public:
 	BitcoinExchange ();
 	BitcoinExchange (std::string &file_base); //throw (char *);
